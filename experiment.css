@@ -1,0 +1,94 @@
+body {
+	width: 700px;
+	margin: 0 auto;
+	font-family: "Trebuchet MS", "Verdana", "Arial", sans-serif;
+}
+
+#previewWarning {
+	color: red;
+	display: none;
+}
+
+#flashWarning {
+	font-size: 12px;
+}
+
+#toneA {
+	margin-right: 30px;
+}
+#toneAlabel {
+	margin-left: 20px;
+}
+
+.question {
+	background-color: #eee;
+	padding: 5px;
+	position: relative;
+}
+
+.soundclip {
+	margin: 0 auto;
+	margin-bottom: 5px;
+	width: 165px;
+	position:relative;
+	background: #369 url('soundmanager/images/icon_play.png');
+	padding: 2px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	color: white;
+	font-size: 13px;
+	height: 18px;
+	background-repeat: no-repeat;
+	background-position: 3px;
+	cursor: pointer;
+}
+
+.soundclip:hover {
+	background-color: #036;
+}
+
+.clipPlaying {
+	background: #036 url('soundmanager/images/icon_pause.png');
+	background-repeat: no-repeat;
+	background-position: 3px;
+}
+
+.clipDisabled {
+	background: #369 url('soundmanager/images/icon_play_disabled.png');
+	background-repeat: no-repeat;
+	background-position: 3px;
+}
+
+.soundclip #loading {
+	padding-left: 20px;
+}
+
+.soundclip #soundcontent {
+	display: none;
+}
+
+.soundclip #time {
+	position: absolute;
+	right: 0;
+	padding-right: 5px;
+}
+
+.soundclip #playInfo {
+	font-style: italic;
+}
+
+.tonelabel {
+	text-align: center;
+	margin: 0 auto;
+	width: 200px;
+	font-size: 12px;
+	margin-top: 10px;
+}
+
+#unsureInstructions {
+	font-size: 12px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sonification Experiment</title>
+	<link rel="stylesheet" type="text/css" href="experiment.css" />
+	<script type="text/javascript" src="jquery/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="soundmanager/soundmanager2.js"></script>
+	<script type="text/javascript" src="js/SonificationExperiment.js"></script>
+	<script type="text/javascript" src="js/soundmanagerSetUp.js"></script>
+	<script type="text/javascript" src="js/utility.js"></script>
+	<script type="text/javascript" src="js/experiment.js"></script>
+	<script type="text/javascript" src="js/content.js"></script>
+</head>
+<body>
+
+<h1 id="question_header">Practice Question</h1>
+<p id="description">
+	The clip below contains five notes of varying lengths. Two of the tones will be highlighted. <b>Out of the five tones, listen to the length of the two highlighted tones and approximately judge what percent the shorter is of the longer.</b> Try not to make a precise measurement and go with your gut instinct.
+</p>
+<p id="playInfo">
+You are only allowed to listen to the clip <span id="maxPlayCount"></span> times. You have <span id="playsLeft"></span> plays left.
+</p>
+<p id="soundclip" class="soundclip">
+	<span id="loading">Loading...</span>
+	<span id="soundcontent">
+		<span id="time"><span id="time_pos">0:00</span>/<span id="total_duration">0:00</span></span>
+	</span>
+</p>
+<div id="questions">
+	<p class='question'>Which tones were highlighted? 
+		<label for='toneA' id="toneAlabel">A</label>
+		<select id='toneA'>
+			<option value="1">1st</option>
+			<option value="2">2nd</option>
+			<option value="3">3rd</option>
+			<option value="4">4th</option>
+			<option value="5">5th</option>
+			<option value="unsure">Not sure</option>
+		</select>
+		<label for='toneB'>B</label>
+		<select id='toneB'>
+			<option value="1">1st</option>
+			<option value="2">2nd</option>
+			<option value="3">3rd</option>
+			<option value="4">4th</option>
+			<option value="5">5th</option>
+			<option value="unsure">Not sure</option>
+		</select>
+	</p>
+	<p class='question'>Which tone is shorter? 
+		<select id='shorterTone'>
+			<option>A</option>
+			<option>B</option>
+			<option value="unsure">Not sure</option>
+		</select>
+	</p>
+	<p class='question'>What percent is the shorter of the longer? <br />
+		<input type="radio" name="practiceAnswer" value="9999" />9999%<br />
+		<input type="radio" name="practiceAnswer" value="273" />273%<br />
+		<input type="radio" name="practiceAnswer" value="-100" />-100%<br />
+		<input type="radio" name="practiceAnswer" value="46" />46%<br />
+	</p>
+</div>
+<p id="previewWarning">This is a PREVIEW. Please accept the HIT first.</p>
+<button id="nextTrial">Next &gt;</button>
+
+<!-- hidden form to submit answers at the end of the HIT -->
+<form id="mturk_form" method="POST" action="https://workersandbox.mturk.com/mturk/externalSubmit">
+	<input type="hidden" id="assignmentId" name="assignmentId" value="" />
+	<input type="hidden" id="chartType" name="chartType" value="" />
+	<input type="hidden" id="answerData" name="answerData" value="" /> <!-- "answer" is a reserved word so don't name your data it! -->
+	<input type="hidden" id="timingData" name="timingData" value="" />
+	<input type="hidden" id="playcountData" name="playcountData" value="" />
+	<input type="hidden" id="demographics" name="demographics" value="" />
+</form>
+</body>
+</html>

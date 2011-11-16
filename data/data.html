@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>Cleveland & McGill</title>
+		<script type="text/javascript" src="dataset-highlight.js"></script>
+		<script type="text/javascript" src="dataset-numbers.js"></script>
+		<script type="text/javascript" src="dataset-pitch.js"></script>
+		<script type="text/javascript" src="../jquery/jquery-1.7.min.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//var dataset = generateHighlightDataset(36);
+				var dataAndHighlight = generateDataset(24);
+				var sDataAndHighlight = generateSimultaneousDataset(12);
+				var dataset = dataAndHighlight.data;
+				var sDataset = sDataAndHighlight.data;
+				var highlightset = dataAndHighlight.highlight;
+				var sHighlightset = sDataAndHighlight.highlight;
+				
+				// highlights
+				var text = "var highlights = [" ;
+				for (var i = 0; i < highlightset.length; i++) {
+					text = text + "[" + highlightset[i] + "],<br />";
+				}
+				text = text + "]";
+				$("#highlight").html(text);
+				var text5 = "var shighlights = [" ;
+				for (var i = 0; i < sHighlightset.length; i++) {
+					text5 = text5 + "[" + sHighlightset[i] + "],<br />";
+				}
+				text5 = text5 + "]";
+				$("#shighlight").html(text5);
+				
+				// pitch
+				var pentatonic = [523.251, 587.330, 659.255, 783.991, 880];
+				var text2 = "var pitch = [";
+				for (var i = 0; i < 24; i++) {
+					text2 = text2 + "[" + shuffle(pentatonic) + "], <br />";
+				}
+				text2 = text2 + "]";
+				$("#pitch").html(text2);
+				
+				// numbers
+				var text3= "var data = [" ;
+				for (var i = 0; i < dataset.length; i++) {
+					text3 = text3 + "[" + dataset[i] + "],<br />";
+				}
+				text3 = text3 + "]";
+				$("#data").html(text3);
+				var text4 = "var sData = [";
+				for (var i = 0; i < sDataset.length; i++) {
+					text4 = text4 + "[" + sDataset[i] + "],<br />";
+				}
+				text4 = text4 + "]";
+				$("#sdata").html(text4);
+			});
+		</script>
+	</head>
+	<body>
+		<div id="highlight"></div>
+		<div id="pitch"></div>
+		<div id="data"></div>
+		<div id="sdata"></div>
+		<div id="shighlight"></div>
+	</body>
+</html>
