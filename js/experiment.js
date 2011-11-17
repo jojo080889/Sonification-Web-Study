@@ -1,7 +1,7 @@
 var experiment;
 var chartType;
 var aID;
-var trialCount = 24; // CHANGE THIS TO 24
+var trialCount = 2; // CHANGE THIS TO 24
 var baseTime;
 var trialPos;
 
@@ -95,6 +95,8 @@ function loadNextTrial() {
 		for (var i = 0; i < checked.length; i++) {
 			demographicsArray.push(checked[i].value);
 		}
+		var ageAnswer = $.trim($("#ageAnswer").val());
+		demographicsArray.push(ageAnswer);
 		experiment.saveDemographics(demographicsArray);
 	}
 	
@@ -142,7 +144,7 @@ function loadNextTrial() {
 		$("#question_header").html("Almost done!");
 		$("#description").html(content['demographics'].description);
 		$("#questions").html(content['demographics'].questions);
-		$(".soundclip").hide();
+		$("#soundclip").hide();
 		$("#playInfo").hide();
 		
 		trialPos = "demographics";
@@ -186,11 +188,9 @@ function validateAnswers() {
 }
 
 function validateDemographics() {
-	//var visionAnswer = $("input[@name=visionAnswer]:checked").val();
-	//var musicAnswer = $("input[@name=musicAnswer]:checked").val();
-	//var musicSkillAnswer = $("input[@name=musicSkillAnswer]:checked").val();
 	var checked = $("input:checked");
-	if (checked.length != 3) {
+	var ageAnswer = $.trim($("#ageAnswer").val());
+	if (checked.length != 5 || ageAnswer == "") {
 		alert("Please answer all the questions!");
 		return false;
 	}
