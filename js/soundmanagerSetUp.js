@@ -14,10 +14,6 @@ function bindPlayLink(soundclipdiv, sound) {
 		if (sound.paused || sound.playState == 0) { //stopped or paused
 			$(soundclipdiv).addClass('clipPlaying');
 			sound.play({
-				whileplaying:function() {
-					// update time
-					$(soundclipdiv + " #time_pos").html(getTime(this.position));
-				},
 				onfinish: function() {
 					$(soundclipdiv).removeClass('clipPlaying');
 				}
@@ -38,10 +34,6 @@ function bindExperimentPlayLink() {
 		if (sound.paused || sound.playState == 0) { //stopped or paused
 			$(soundclipdiv).addClass('clipPlaying');
 			mySound.play({
-				whileplaying:function() {
-					// update time
-					$("#time_pos").html(getTime(this.position));
-				},
 				onfinish: function() {
 					$(soundclipdiv).removeClass('clipPlaying');
 					// decrease allowed play count

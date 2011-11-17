@@ -37,9 +37,6 @@ $(document).ready(function() {
 			autoLoad: true,
 			onload: function() {
 				$("#loading").hide();
-				$("#soundcontent").show();
-				$("#total_duration").html(getTime(this.duration));
-				$("#time_pos").html("0:00");
 			}
 		});
 		
@@ -116,9 +113,6 @@ function loadNextTrial() {
 			autoLoad: true,
 			onload: function() {
 				$("#loading").hide();
-				$("#soundcontent").show();
-				$("#total_duration").html(getTime(this.duration));
-				$("#time_pos").html("0:00");
 			}
 		});
 		$("#soundclip").unbind();
@@ -145,6 +139,7 @@ function loadNextTrial() {
 		$("#description").html(content['demographics'].description);
 		$("#questions").html(content['demographics'].questions);
 		$("#soundclip").hide();
+		soundManager.destroySound(mySoundID);
 		$("#playInfo").hide();
 		
 		trialPos = "demographics";

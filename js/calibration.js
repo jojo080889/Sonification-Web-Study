@@ -23,14 +23,10 @@ $(document).ready(function() {
 			autoLoad: true,
 			onload: function() {
 				$("#loading").hide();
-				$("#soundcontent").show();
-				$("#total_duration").html(getTime(this.duration));
-				$("#time_pos").html("0:00");
 			}
 		});
 
 		bindPlayLink("#soundclip", mySound);
-		//bindPauseLink("#soundclip", mySound);
 	});
 });
 
