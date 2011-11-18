@@ -1,7 +1,7 @@
 var experiment;
 var chartType;
 var aID;
-var trialCount = 2; // CHANGE THIS TO 24
+var trialCount = 24; // CHANGE THIS TO 24
 var baseTime;
 var trialPos;
 
@@ -147,6 +147,35 @@ function loadNextTrial() {
 		$("#soundclip").hide();
 		soundManager.destroySound(mySoundID);
 		$("#playInfo").hide();
+
+		// bind demographic sound clips
+		practice1 = soundManager.createSound({
+			id: "practice1",
+			url: "sounds/practice1.mp3",
+			autoLoad: true,
+			onload: function() {
+				$("#soundclip_samepitch #loading").hide();
+			}
+		});
+		practice2 = soundManager.createSound({
+			id: "practice2",
+			url: "sounds/practice2.mp3",
+			autoLoad: true,
+			onload: function() {
+				$("#soundclip_mixedpitch #loading").hide();
+			}
+		});
+		practice3 = soundManager.createSound({
+			id: "practice3",
+			url: "sounds/practice3.mp3",
+			autoLoad: true,
+			onload: function() {
+				$("#soundclip_orderpitch #loading").hide();
+			}
+		});
+		bindPlayLink("#soundclip_samepitch", practice1);
+		bindPlayLink("#soundclip_orderpitch", practice3);
+		bindPlayLink("#soundclip_mixedpitch", practice2);
 		
 		trialPos = "demographics";
 	} else { // demographics

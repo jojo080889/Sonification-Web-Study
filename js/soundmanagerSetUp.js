@@ -6,6 +6,7 @@ soundManager.waitForWindowLoad = false;
 soundManager.useHTML5Audio = false;
 var mySound;
 var mySoundID;
+var practice1, practice2, practice3;
 
 function bindPlayLink(soundclipdiv, sound) {
 	// set up SoundManager
@@ -46,7 +47,7 @@ function bindExperimentPlayLink() {
 					if (this.questionState == 0) {
 						this.questionState = 1;
 						// change prompt
-						$("#message").html("Answer the following questions, then press play again. <b>You won't be able to change your answers once you press play again!</b>");
+						$("#description").html("Answer the following questions, then press play again. <b>You won't be able to change your answers once you press play again!</b>");
 						// show new question widgets
 						$("#whichHighlight").show();
 						$("#whichShorter").show();

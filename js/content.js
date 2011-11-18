@@ -23,18 +23,18 @@ var content = {
 		"<input type='radio' name='practiceAnswer' value='9999' />9999%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='273' />273%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='-100' />-100%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='46' />46%<br />"
+		"<input type='radio' name='practiceAnswer' value='13' />13%<br />"
 	},
 	"practice2": {
 		percentage: "What percent is the shorter of the longer?<br />" +
 		"<input type='radio' name='practiceAnswer' value='2424' />2424%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='38' />38%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='22' />22%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='772' />772%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='-984' />-984%<br />"
 	},
 	"practice3": {
 		percentage: "What percent is the shorter of the longer?<br />" +
-		"<input type='radio' name='practiceAnswer' value='62' />62%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='37' />37%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='808' />808%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='-1' />-1%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='1425' />1425%<br />"

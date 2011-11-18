@@ -3,6 +3,7 @@ var chartType;
 var aID;
 var trialCount = 3; // CHANGE THIS TO 3
 var trialPos;
+var nextTrial;
 
 $(document).ready(function() {
 	// get values from url string
@@ -24,7 +25,7 @@ $(document).ready(function() {
 	$("#maxPlayCount").html(experiment.getPlayLimit());
 	$("#playsLeft").html(experiment.getPlayLimit());
 
-	var nextTrial = experiment.getNextTrial();
+	nextTrial = experiment.getNextTrial();
 
 	// load answer choices for first trial
 	loadPracticePercentageChoices(nextTrial);
@@ -48,10 +49,10 @@ $(document).ready(function() {
 
 function loadNextPractice() {	
 	trialPos = experiment.getTrialPos();
-	var validAnswers = validatePractice(trialPos);
+	var validAnswers = validatePractice(nextTrial);
 	if (!validAnswers) { return false; }
 	
-	var nextTrial = experiment.getNextTrial();
+	nextTrial = experiment.getNextTrial();
 	// get updated trial number
 	trialPos = experiment.getTrialPos();
 	if (trialPos != experiment.END_OF_TRIALS) {
@@ -102,22 +103,22 @@ function loadPracticePercentageChoices(trialNum) {
 }
 
 function validatePractice(trialNum) {
-	/*
-	if (trialNum == 0) {
-		// make sure user enters the right answers
-		var toneA = $("#toneA").val();
-		var toneB = $("#toneB").val();
-		var shorterTone = $("#shorterTone").val();
-		var practiceAnswer = $("input[@name=practiceAnswer]:checked").val();
-		if (practiceAnswer == undefined) {
-			alert("Please answer all the questions!");
-			return false;
-		} else if ((practiceAnswer != 46) || (toneA != 1) || (toneB != 3) || (shorterTone != "A")) { // TODO change these hard coded answers
-			alert("Some of your answers are not correct. Make sure you understand the instructions and try again.");
-			return false;
-		}
-	} else { // TODO check for other trials
-	
-	}*/
+	// make sure user enters the right answers
+	var toneA = $("#toneA").val();
+	var toneB = $("#toneB").val();
+	var shorterTone = $("#shorterTone").val();
+	var practiceAnswer = $("input[@name=practiceAnswer]:checked").val();
+	if (practiceAnswer == undefined) {
+		alert("Please answer all the questions!");
+		return false;
+	}
+		
+	if (trialNum == 1) { // if practice1
+		alert("The highlighted tones were the 1st and the 5th.\nThe shorter tone was A.\nThe percentage was 13.\n");
+	} else if (trialNum == 2) {
+		alert("The highlighted tones were the 1st and the 3rd.\nThe shorter tone was B.\nThe percentage was 22.\n");
+	} else if (trialNum == 3) {
+		alert("The highlighted tones were the 1st and the 3rd.\nThe shorter tone was A.\nThe percentage was 37.\n"); 
+	}
 	return true;
 }
