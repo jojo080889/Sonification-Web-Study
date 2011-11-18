@@ -31,9 +31,9 @@ var shuffle = function(array) {
     return array;
 };
 
-function generateDataArray() {
-	var pairIndex = Math.floor(Math.random()*10); // pick between 0 and 9
-	var pair = [s[sa[pairIndex]], s[sb[pairIndex]]];
+function generateDataArray(pair) {
+	//var pairIndex = Math.floor(Math.random()*10); // pick between 0 and 9
+	//var pair = [s[sa[pairIndex]], s[sb[pairIndex]]];
 	pair.push(Math.floor(Math.random()*91) + 10); // 10 and 100
 	pair.push(Math.floor(Math.random()*91) + 10);
 	pair.push(Math.floor(Math.random()*91) + 10);
@@ -60,19 +60,25 @@ function generateDataArray() {
 function generateDataset(n) {
 	var dataset = new Array(n);
 	var highlightset = new Array(n);
-	for (var i = 0; i < n; i++) {
-		var d = generateDataArray();
-		dataset[i] = d[0];
-		highlightset[i] = d[1];
+	var ratios = [13, 22, 37, 52, 68, 83];
+	for (var i = 0; i < 4; i++) { // for each chart type
+		for (var j = 0; j < ratios.length; j++) { // for each ratio
+			var p = generatePair(ratios[j]);
+			var d = generateSimultaneousDataArray(p);
+			dataset[i*6 + j] = d[0];
+			highlightset[i*6 + j] = d[1];
+		}
 	}
 	return {data: dataset, highlight: highlightset};
 }
 
-function generateSimultaneousDataArray() {
-	var pairIndex = Math.floor(Math.random()*10); // pick between 0 and 9
-	var pairA = s[sa[pairIndex]];
-	var pairB = s[sb[pairIndex]];
-	var pair = [pairA, pairB];
+function generateSimultaneousDataArray(pair) {
+	//var pairIndex = Math.floor(Math.random()*10); // pick between 0 and 9
+	//var pairA = s[sa[pairIndex]];
+	//var pairB = s[sb[pairIndex]];
+	//var pair = [pairA, pairB];
+	var pairA = pair[0];
+	var pairB = pair[1];
 	pair.push(Math.floor(Math.random()*91) + 10); // 10 and 100
 	pair.push(Math.floor(Math.random()*91) + 10);
 	pair.push(Math.floor(Math.random()*91) + 10);
@@ -112,12 +118,40 @@ function generateSimultaneousDataArray() {
 function generateSimultaneousDataset(n) {
 	var dataset = new Array(n);
 	var highlightset = new Array(n);
-	for (var i = 0; i < n; i++) {
-		var d = generateSimultaneousDataArray();
-		dataset[i] = d[0];
-		highlightset[i] = d[1];
+	var ratios = [13, 22, 37, 52, 68, 83];
+	for (var i = 0; i < 4; i++) { // for each chart type
+		for (var j = 0; j < ratios.length; j++) { // for each ratio
+			var p = generatePair(ratios[j]);
+			var d = generateSimultaneousDataArray(p);
+			dataset[i*6 + j] = d[0];
+			highlightset[i*6 + j] = d[1];
+		}
 	}
 	return {data: dataset, highlight: highlightset};
+}
+
+function generateRatio() {
+	var ratio = Math.floor(Math.random()*77) + 12; // 12 and 88
+	var ratioMod = ratio % 5;
+	if (ratioMod == 0 || ratioMod == 1 || ratioMod == 4) {
+		ratio = generateRatio();
+	}
+	return ratio;
+}
+
+function generatePair(ratio) {
+	var x = Math.floor(Math.random()*91) + 10;
+	var y = Math.floor(Math.random()*91) + 10;
+	var r;
+	if (Math.max(x, y) == x) {
+		r = Math.round((y / x) * 100);
+	} else {
+		r = Math.round((x / y) * 100);
+	}
+	if (r != ratio) {
+		return generatePair(ratio);
+	}
+	return [x, y];
 }
 
 /* 12 arrays, for simultaneous data */
