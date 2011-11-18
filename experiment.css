@@ -3,7 +3,9 @@ body {
 	margin: 0 auto;
 	font-family: "Trebuchet MS", "Verdana", "Arial", sans-serif;
 }
-
+#playInfo, #whichHighlight, #whichShorter, #percentage {
+	display: none;
+}
 #previewWarning {
 	color: red;
 	display: none;

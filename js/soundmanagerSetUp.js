@@ -1,6 +1,6 @@
 // set up SoundManager
 soundManager.url = 'soundmanager/swf';
-soundManager.debugMode = false;
+//soundManager.debugMode = false;
 soundManager.useConsole = false;
 soundManager.waitForWindowLoad = false;
 soundManager.useHTML5Audio = false;
@@ -29,7 +29,6 @@ function bindExperimentPlayLink() {
 	var sound = mySound;
 	var soundclipdiv = "#soundclip";
 	// set up SoundManager
-	$("#time_pos").html("0:00");
 	$(soundclipdiv).bind('click', function() {
 		if (sound.paused || sound.playState == 0) { //stopped or paused
 			$(soundclipdiv).addClass('clipPlaying');
@@ -43,6 +42,24 @@ function bindExperimentPlayLink() {
 					if (allowedPlaysLeft == 0) {
 						$(soundclipdiv).addClass('clipDisabled');
 						$(soundclipdiv).unbind();
+					}
+					if (this.questionState == 0) {
+						this.questionState = 1;
+						// change prompt
+						$("#message").html("Answer the following questions, then press play again. <b>You won't be able to change your answers once you press play again!</b>");
+						// show new question widgets
+						$("#whichHighlight").show();
+						$("#whichShorter").show();
+
+						// start timer (if not practice)
+					} else if (this.questionState == 1) {
+						this.questionState = 2;
+						// stop timer (if not practice)
+						// disable previous question widgets
+						$("#whichHighlight select").attr("disabled", "disabled");
+						$("#whichShorter select").attr("disabled", "disabled");
+						$("#percentage").show();
+						$("#nextTrial").removeAttr("disabled");
 					}
 				}
 			});

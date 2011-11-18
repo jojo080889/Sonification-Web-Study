@@ -9,7 +9,7 @@ $(document).ready(function() {
 	}
 	
 	$("#nextTrial").bind('click', function() {
-		var url = "experiment.html?assignmentId=" + aID + "&chartType=" + chartType;
+		var url = "practice.html?assignmentId=" + aID + "&chartType=" + chartType;
 		window.location = url;
 	});
 	

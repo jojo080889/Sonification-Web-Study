@@ -13,7 +13,7 @@ function SonificationExperiment(chartTypeName, trialCount, playLimit) {
 	// DATA
 	this.chartTypeName = chartTypeName;
 	this.trialCount = trialCount;
-	this.trialPosition = -1; // start at practice question
+	this.trialPosition = -1; // -1 = not started, 0 = first trial
 	this.playLimit = playLimit;
 	this.orderArray = new Array(this.trialCount);
 	this.answerArray = new Array(this.trialCount);

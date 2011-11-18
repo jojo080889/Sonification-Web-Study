@@ -26,20 +26,22 @@ $(document).ready(function() {
 	// populate play count information
 	$("#maxPlayCount").html(experiment.getPlayLimit());
 	$("#playsLeft").html(experiment.getPlayLimit());
-	
+
+	var nextTrial = experiment.getNextTrial();
+
 	// set up soundmanager
-	// set up sound stuff
-	mySoundID = 'practice';
+	mySoundID = nextTrial;
 	soundManager.onready(function() {
 		mySound = soundManager.createSound({
 			id: mySoundID,
-			url: 'sounds/practice.mp3',
+			url: 'sounds/' + nextTrial + '.mp3',
 			autoLoad: true,
 			onload: function() {
 				$("#loading").hide();
 			}
 		});
-		
+		mySound.questionState = 0;
+
 		bindExperimentPlayLink();
 	});
 	
@@ -51,25 +53,18 @@ function loadNextTrial() {
 	if (trialPos != "demographics") {
 		trialPos = experiment.getTrialPos();
 	}
+
 	var validAnswers;
-	
-	// if it's the practice question, make sure the participant was correct
-	// before allowing them to continue
-	if (trialPos == -1) {
-		validAnswers = validatePractice();
-		if (!validAnswers) { return false; }
-	} else if (trialPos != "demographics") {
+	if (trialPos != "demographics") {
 		// on the normal questions, make sure participants fill out the questions
 		validAnswers = validateAnswers();
-		if (!validAnswers) { return false; }
 	} else { // demographics
 		validAnswers = validateDemographics();
-		if (!validAnswers) { return false; }
 	}
+	if (!validAnswers) { return false; }
 	
-	// Save participant answers (if not the practice)
-	if ((trialPos != -1) && (trialPos != experiment.END_OF_TRIALS) && (trialPos != "demographics")) {
-		// save answers
+	// Save participant answers 
+	if ((trialPos != experiment.END_OF_TRIALS) && (trialPos != "demographics")) {
 		var answerArray = []; // don't need to save trialPos, since that = index of answer arrays
 		answerArray.push(experiment.getCurrentTrial());
 		answerArray.push($("#toneA").val());
@@ -96,7 +91,8 @@ function loadNextTrial() {
 		demographicsArray.push(ageAnswer);
 		experiment.saveDemographics(demographicsArray);
 	}
-	
+
+	// Prepare to load next trial
 	var nextTrial = experiment.getNextTrial();
 	if (trialPos != "demographics") {
 		trialPos = experiment.getTrialPos();
@@ -115,25 +111,33 @@ function loadNextTrial() {
 				$("#loading").hide();
 			}
 		});
+		mySound.questionState = 0;
 		$("#soundclip").unbind();
 		bindExperimentPlayLink();
 		$("#soundclip").removeClass('clipDisabled');
 		$("#soundclip").removeClass('clipPlaying');
 		$("#playsLeft").html(experiment.getPlayLimit());
 		
+		// reset content
+		$("#whichHighlight").hide();
+		$("#whichShorter").hide();
+		$("#percentage").hide();
+		$("#whichHighlight select").removeAttr("disabled");
+		$("#whichShorter select").removeAttr("disabled");
+		$("#toneA").val("1");
+		$("#toneB").val("1");
+		$("#shorterTone").val("A");
+		$("#description").html("Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to the order of the two highlighted tones and which of the two is shorter.</b>");
+		$("#nextTrial").attr("disabled", "disabled");
+		$("#percentage input").val("");
+
 		// replace content
 		$("#question_header").html("Question " + (trialPos + 1) + " out of " + trialCount);
-		$("#questions").html(content[chartType].questions);
+		//$("#questions").html(content[chartType].questions);
 		
 		// reset baseTime
 		baseTime = new Date().getTime();
 	} else if (trialPos == experiment.END_OF_TRIALS) { // last trial
-		if (aID == "ASSIGNMENT_ID_NOT_AVAILABLE") {
-			$("#nextTrial").attr('disabled', 'disabled');
-			$("#nextTrial").html("You must ACCEPT the HIT before you can submit the results.");
-		} else {
-			$("#nextTrial").html("Submit");
-		}
 		// Replace with demographics content
 		$("#question_header").html("Almost done!");
 		$("#description").html(content['demographics'].description);
@@ -145,6 +149,12 @@ function loadNextTrial() {
 		trialPos = "demographics";
 	} else { // demographics
 		// Populate hidden form and submit it
+		if (aID == "ASSIGNMENT_ID_NOT_AVAILABLE") {
+			$("#nextTrial").attr('disabled', 'disabled');
+			$("#nextTrial").html("You must ACCEPT the HIT before you can submit the results.");
+		} else {
+			$("#nextTrial").html("Submit");
+		}
 		$("#answerData").val(experiment.getTrialAnswers());
 		$("#timingData").val(experiment.getTimingData());
 		$("#playcountData").val(experiment.getPlayCountData());
@@ -152,22 +162,6 @@ function loadNextTrial() {
 		$("#mturk_form").submit();
 	}
 };
-
-function validatePractice() {
-	// make sure user enters the right answers
-	var toneA = $("#toneA").val();
-	var toneB = $("#toneB").val();
-	var shorterTone = $("#shorterTone").val();
-	var practiceAnswer = $("input[@name=practiceAnswer]:checked").val();
-	if (practiceAnswer == undefined) {
-		alert("Please answer all the questions!");
-		return false;
-	} else if ((practiceAnswer != 46) || (toneA != 1) || (toneB != 3) || (shorterTone != "A")) { // TODO change these hard coded answers
-		alert("Some of your answers are not correct. Make sure you understand the instructions and try again.");
-		return false;
-	}
-	return true;
-}
 
 function validateAnswers() {
 	// make sure user enters a number for the percentage answer

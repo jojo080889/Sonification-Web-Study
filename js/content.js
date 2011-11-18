@@ -17,5 +17,26 @@ var content = {
 		"<tr id='preferences'><td><p class='question'>How would you rate Type 1? <br /><input type='radio' name='samePitchPrefer' value='1' />1 (Not preferable)<br /><input type='radio' name='samePitchPrefer' value='2' />2<br /><input type='radio' name='samePitchPrefer' value='3' />3 (Neutral)<br /><input type='radio' name='samePitchPrefer' value='4' />4<br /><input type='radio' name='samePitchPrefer' value='5' />5 (Preferable)<br /></p></td>" + 
 		"<td><p class='question'>How would you rate Type 2? <br /><input type='radio' name='orderPitchPrefer' value='1' />1 (Not preferable)<br /><input type='radio' name='orderPitchPrefer' value='2' />2<br /><input type='radio' name='orderPitchPrefer' value='3' />3 (Neutral)<br /><input type='radio' name='orderPitchPrefer' value='4' />4<br /><input type='radio' name='orderPitchPrefer' value='5' />5 (Preferable)<br /></p></td>" + 
 		"<td><p class='question'>How would you rate Type 3? <br /><input type='radio' name='mixedPitchPrefer' value='1' />1 (Not preferable)<br /><input type='radio' name='mixedPitchPrefer' value='2' />2<br /><input type='radio' name='mixedPitchPrefer' value='3' />3 (Neutral)<br /><input type='radio' name='mixedPitchPrefer' value='4' />4<br /><input type='radio' name='mixedPitchPrefer' value='5' />5 (Preferable)<br /></p></td></tr></table>" 
+	},
+	"practice1": {
+		percentage: "What percent is the shorter of the longer?<br />" +
+		"<input type='radio' name='practiceAnswer' value='9999' />9999%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='273' />273%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='-100' />-100%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='46' />46%<br />"
+	},
+	"practice2": {
+		percentage: "What percent is the shorter of the longer?<br />" +
+		"<input type='radio' name='practiceAnswer' value='2424' />2424%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='38' />38%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='772' />772%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='-984' />-984%<br />"
+	},
+	"practice3": {
+		percentage: "What percent is the shorter of the longer?<br />" +
+		"<input type='radio' name='practiceAnswer' value='62' />62%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='808' />808%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='-1' />-1%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='1425' />1425%<br />"
 	}
 }
