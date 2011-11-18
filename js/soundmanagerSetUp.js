@@ -51,7 +51,8 @@ function bindExperimentPlayLink() {
 						$("#whichHighlight").show();
 						$("#whichShorter").show();
 
-						// start timer (if not practice)
+						// start timer
+						baseTime = new Date().getTime();
 					} else if (this.questionState == 1) {
 						this.questionState = 2;
 						// stop timer (if not practice)
@@ -60,6 +61,8 @@ function bindExperimentPlayLink() {
 						$("#whichShorter select").attr("disabled", "disabled");
 						$("#percentage").show();
 						$("#nextTrial").removeAttr("disabled");
+						// start second timer
+						baseTime = new Date().getTime();
 					}
 				}
 			});

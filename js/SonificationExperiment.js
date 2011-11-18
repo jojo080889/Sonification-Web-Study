@@ -18,7 +18,8 @@ function SonificationExperiment(chartTypeName, trialCount, playLimit) {
 	this.orderArray = new Array(this.trialCount);
 	this.answerArray = new Array(this.trialCount);
 	this.playCountArray = new Array(this.trialCount);
-	this.answerTimingArray = new Array(this.trialCount);
+	this.answerFirstTimingArray = new Array(this.trialCount);
+	this.answerSecondTimingArray = new Array(this.trialCount);
 	this.demographicsArray = [];
 	
 	// CONSTRUCTION
@@ -75,11 +76,17 @@ function SonificationExperiment(chartTypeName, trialCount, playLimit) {
 		return this.playLimit;
 	}
 	
-	this.saveTiming = function(index, timing) {
-		this.answerTimingArray[index] = timing;
+	this.saveFirstTiming = function(index, timing) {
+		this.answerFirstTimingArray[index] = timing;
 	}
-	this.getTimingData = function() {
-		return this.answerTimingArray;
+	this.saveSecondTiming = function(index, timing) {
+		this.answerSecondTimingArray[index] = timing;
+	}
+	this.getFirstTimingData = function() {
+		return this.answerFirstTimingArray;
+	}
+	this.getSecondTimingData = function() {
+		return this.answerSecondTimingArray;
 	}
 	
 	this.getTrialPos = function() {

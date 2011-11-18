@@ -13,11 +13,14 @@ $(document).ready(function() {
 	// create experiment object
 	experiment = new SonificationExperiment(chartType, trialCount);
 	
-	// fill in hidden form and assign click events
+	// fill in hidden form and assign events
 	$("#assignmentId").val(aID);
 	$("#chartType").val(chartType);
 	$("#nextTrial").bind('click', loadNextTrial);
-	
+	$("#toneA").bind('change', updateFirstAnswerTime);
+	$("#toneB").bind('change', updateFirstAnswerTime);
+	$("#shorterTone").bind('change', updateFirstAnswerTime);
+
 	// show preview warning if needed
 	if (aID == "ASSIGNMENT_ID_NOT_AVAILABLE") {
 		$("#previewWarning").css('display', 'block');
@@ -72,11 +75,10 @@ function loadNextTrial() {
 		answerArray.push($("#shorterTone").val());
 		answerArray.push($("#percentAnswer").val());
 		experiment.saveTrialAnswer(trialPos, answerArray);
-		
-		// record how long it took for the participant to answer
-		var nowTime = new Date().getTime();
-		experiment.saveTiming(trialPos, nowTime - baseTime); // in milliseconds
-		
+	
+		// record timing for second half
+		updateSecondAnswerTime();
+
 		// record number of plays it took for the participant to answer
 		var playsLeft = $("#playsLeft").html();
 		experiment.savePlayCount(trialPos, experiment.getPlayLimit() - playsLeft);
@@ -156,12 +158,26 @@ function loadNextTrial() {
 			$("#nextTrial").html("Submit");
 		}
 		$("#answerData").val(experiment.getTrialAnswers());
-		$("#timingData").val(experiment.getTimingData());
+		$("#firstTimingData").val(experiment.getFirstTimingData());
+		$("#secondTimingData").val(experiment.getSecondTimingData());
 		$("#playcountData").val(experiment.getPlayCountData());
 		$("#demographics").val(experiment.getDemographics());
 		$("#mturk_form").submit();
 	}
 };
+
+// Since the dropdowns get disabled after the second play finishes,
+// this function should only be called before that point.
+function updateFirstAnswerTime() {
+	// record how long it took for the participant to answer
+	var nowTime = new Date().getTime();
+	experiment.saveFirstTiming(experiment.getTrialPos(), nowTime - baseTime); // in milliseconds
+}
+
+function updateSecondAnswerTime() {
+	var nowTime = new Date().getTime();
+	experiment.saveSecondTiming(experiment.getTrialPos(), nowTime - baseTime);
+}
 
 function validateAnswers() {
 	// make sure user enters a number for the percentage answer
