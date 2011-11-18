@@ -129,7 +129,7 @@ function loadNextTrial() {
 		$("#toneA").val("1");
 		$("#toneB").val("1");
 		$("#shorterTone").val("A");
-		$("#description").html("Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to the order of the two highlighted tones and which of the two is shorter.</b>");
+		$("#description").html("Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to the order of the two highlighted tones and which of the two is shorter.</b> Try not to make a precise measurement and go with your gut instinct.");
 		$("#nextTrial").attr("disabled", "disabled");
 		$("#percentage input").val("");
 
@@ -224,7 +224,7 @@ function validateAnswers() {
 function validateDemographics() {
 	var checked = $("input:checked");
 	var ageAnswer = $.trim($("#ageAnswer").val());
-	if (checked.length != 5 || ageAnswer == "") {
+	if (checked.length != 7 || ageAnswer == "") {
 		alert("Please answer all the questions!");
 		return false;
 	}

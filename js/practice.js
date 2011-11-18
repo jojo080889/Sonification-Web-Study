@@ -85,7 +85,7 @@ function loadNextPractice() {
 		$("#toneA").val("1");
 		$("#toneB").val("1");
 		$("#shorterTone").val("A");
-		$("#description").html("Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to the order of the two highlighted tones and which of the two is shorter.</b>");
+		$("#description").html("Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to the order of the two highlighted tones and which of the two is shorter.</b> Try not to make a precise measurement and go with your gut instinct.");
 		$("#nextTrial").attr("disabled", "disabled");
 
 		// replace content
