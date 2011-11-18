@@ -85,7 +85,7 @@ function loadNextPractice() {
 		$("#toneA").val("1");
 		$("#toneB").val("1");
 		$("#shorterTone").val("A");
-		$("#description").html("Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to the order of the two highlighted tones and which of the two is shorter.</b> Try not to make a precise measurement and go with your gut instinct.");
+		$("#description").html("Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to the order of the two highlighted tones and which of the two is shorter.</b>");
 		$("#nextTrial").attr("disabled", "disabled");
 
 		// replace content
@@ -114,11 +114,11 @@ function validatePractice(trialNum) {
 	}
 		
 	if (trialNum == 1) { // if practice1
-		alert("The highlighted tones were the 1st and the 5th.\nThe shorter tone was A.\nThe percentage was 13.\n");
+		alert("Check your answers:\nThe highlighted tones were the 1st and the 5th.\nThe shorter tone was A.\nThe percentage was 13.\n");
 	} else if (trialNum == 2) {
-		alert("The highlighted tones were the 1st and the 3rd.\nThe shorter tone was B.\nThe percentage was 22.\n");
+		alert("Check your answers:\nThe highlighted tones were the 1st and the 3rd.\nThe shorter tone was B.\nThe percentage was 22.\n");
 	} else if (trialNum == 3) {
-		alert("The highlighted tones were the 1st and the 3rd.\nThe shorter tone was A.\nThe percentage was 37.\n"); 
+		alert("Check your answers:\nThe highlighted tones were the 1st and the 3rd.\nThe shorter tone was A.\nThe percentage was 37.\n"); 
 	}
 	return true;
 }

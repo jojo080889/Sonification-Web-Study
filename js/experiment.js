@@ -2,7 +2,7 @@ var experiment;
 var chartType;
 var aID;
 var trialCount = 24; // CHANGE THIS TO 24
-var baseTime;
+var baseTime, firstAnswerTime;
 var trialPos;
 
 $(document).ready(function() {
@@ -47,9 +47,6 @@ $(document).ready(function() {
 
 		bindExperimentPlayLink();
 	});
-	
-	// To keep track of how long it takes the participant to answer
-	baseTime = new Date().getTime();
 });
 
 function loadNextTrial() {	
@@ -76,6 +73,7 @@ function loadNextTrial() {
 		answerArray.push($("#percentAnswer").val());
 		experiment.saveTrialAnswer(trialPos, answerArray);
 	
+		// timing for first half is recorded onFinish of second play
 		// record timing for second half
 		updateSecondAnswerTime();
 
@@ -129,7 +127,7 @@ function loadNextTrial() {
 		$("#toneA").val("1");
 		$("#toneB").val("1");
 		$("#shorterTone").val("A");
-		$("#description").html("Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to the order of the two highlighted tones and which of the two is shorter.</b> Try not to make a precise measurement and go with your gut instinct.");
+		$("#description").html("Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to the order of the two highlighted tones and which of the two is shorter.</b>");
 		$("#nextTrial").attr("disabled", "disabled");
 		$("#percentage input").val("");
 
@@ -199,12 +197,11 @@ function loadNextTrial() {
 // this function should only be called before that point.
 function updateFirstAnswerTime() {
 	// record how long it took for the participant to answer
-	var nowTime = new Date().getTime();
-	experiment.saveFirstTiming(experiment.getTrialPos(), nowTime - baseTime); // in milliseconds
+	nowTime = new Date().getTime();
 }
 
 function updateSecondAnswerTime() {
-	var nowTime = new Date().getTime();
+	nowTime = new Date().getTime();
 	experiment.saveSecondTiming(experiment.getTrialPos(), nowTime - baseTime);
 }
 
