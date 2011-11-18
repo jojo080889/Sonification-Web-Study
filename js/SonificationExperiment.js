@@ -5,7 +5,7 @@
 //		playLimit : Int (optional) - the max number of times sound clips are allowed to play.
 
 function SonificationExperiment(chartTypeName, trialCount, playLimit) {
-	if (!playLimit) { playLimit = 3 };
+	if (!playLimit) { playLimit = 2 };
 	
 	// CONSTANTS
 	this.END_OF_TRIALS = "END_OF_TRIALS";

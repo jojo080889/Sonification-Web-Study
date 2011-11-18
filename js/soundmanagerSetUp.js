@@ -47,16 +47,19 @@ function bindExperimentPlayLink() {
 					if (this.questionState == 0) {
 						this.questionState = 1;
 						// change prompt
-						$("#description").html("Answer the following questions, then press play again. <b>You won't be able to change your answers once you press play again!</b>");
+						$("#description").html("Answer the following questions, then press play again. <b>Pay attention to what percent the length of the shorter tone is of the length of the longer tone.</b> For example, if the shorter tone is half as long as the longer tone, the percentage would be 50%. Try not to make a precise measurement and go with your gut instinct. <b>You won't be able to change your first two answers once the clip finishes playing the second time!</b>");
 						// show new question widgets
 						$("#whichHighlight").show();
 						$("#whichShorter").show();
 
 						// start timer
 						baseTime = new Date().getTime();
+						nowTime = baseTime;
 					} else if (this.questionState == 1) {
 						this.questionState = 2;
-						// stop timer (if not practice)
+						
+						// save timing for first answer
+						experiment.saveFirstTiming(experiment.getTrialPos(), nowTime - baseTime); // in milliseconds
 						// disable previous question widgets
 						$("#whichHighlight select").attr("disabled", "disabled");
 						$("#whichShorter select").attr("disabled", "disabled");
