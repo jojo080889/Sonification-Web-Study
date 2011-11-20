@@ -1,9 +1,10 @@
 var experiment;
 var chartType;
 var aID;
-var trialCount = 24; // CHANGE THIS TO 24
+var trialCount = 1; // CHANGE THIS TO 24
 var baseTime, firstAnswerTime;
 var trialPos;
+var nextTrial;
 
 $(document).ready(function() {
 	// get values from url string
@@ -16,10 +17,7 @@ $(document).ready(function() {
 	// fill in hidden form and assign events
 	$("#assignmentId").val(aID);
 	$("#chartType").val(chartType);
-	$("#nextTrial").bind('click', loadNextTrial);
-	$("#toneA").bind('change', updateFirstAnswerTime);
-	$("#toneB").bind('change', updateFirstAnswerTime);
-	$("#shorterTone").bind('change', updateFirstAnswerTime);
+	$("#nextTrial").bind('click', loadPartB);
 
 	// show preview warning if needed
 	if (aID == "ASSIGNMENT_ID_NOT_AVAILABLE") {
@@ -31,6 +29,11 @@ $(document).ready(function() {
 	$("#playsLeft").html(experiment.getPlayLimit());
 
 	var nextTrial = experiment.getNextTrial();
+
+	// load question header and instructions
+	trialPos = experiment.getTrialPos();
+	$("#question_header").html("Question " + (trialPos + 1) + "A out of " + trialCount);
+	$("#description").html(content["instructions"].partA);
 
 	// set up soundmanager
 	mySoundID = nextTrial;
@@ -49,6 +52,22 @@ $(document).ready(function() {
 	});
 });
 
+function loadPartB() {
+	trialPos = experiment.getTrialPos();
+
+	// update content for second part
+	$("#question_header").html("Question " + (trialPos + 1) + "B out of " + trialCount);
+	$("#description").html(content["instructions"].partB);
+	$("#whichHighlight").hide();
+	$("#nextTrial").unbind();
+	$("#nextTrial").bind('click', loadNextTrial);
+	$("#nextTrial").attr("disabled", "disabled");
+	enableExperimentSound("#soundclip");
+
+	//save timing for first question
+	updateFirstAnswerTime();
+}
+
 function loadNextTrial() {	
 	if (trialPos != "demographics") {
 		trialPos = experiment.getTrialPos();
@@ -62,7 +81,7 @@ function loadNextTrial() {
 		validAnswers = validateDemographics();
 	}
 	if (!validAnswers) { return false; }
-	
+
 	// Save participant answers 
 	if ((trialPos != experiment.END_OF_TRIALS) && (trialPos != "demographics")) {
 		var answerArray = []; // don't need to save trialPos, since that = index of answer arrays
@@ -113,8 +132,7 @@ function loadNextTrial() {
 		});
 		mySound.questionState = 0;
 		$("#soundclip").unbind();
-		bindExperimentPlayLink();
-		$("#soundclip").removeClass('clipDisabled');
+		enableExperimentSound("#soundclip");
 		$("#soundclip").removeClass('clipPlaying');
 		$("#playsLeft").html(experiment.getPlayLimit());
 		
@@ -122,18 +140,20 @@ function loadNextTrial() {
 		$("#whichHighlight").hide();
 		$("#whichShorter").hide();
 		$("#percentage").hide();
-		$("#whichHighlight select").removeAttr("disabled");
-		$("#whichShorter select").removeAttr("disabled");
+	
 		$("#toneA").val("1");
 		$("#toneB").val("1");
 		$("#shorterTone").val("A");
-		$("#description").html("Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to the order of the two highlighted tones and which of the two is shorter.</b>");
-		$("#nextTrial").attr("disabled", "disabled");
 		$("#percentage input").val("");
+		$("#description").html(content["instructions"].partA);
+
+		// rebind next button
+		$("#nextTrial").unbind();
+		$("#nextTrial").bind('click', loadPartB);
+		$("#nextTrial").attr("disabled", "disabled");
 
 		// replace content
-		$("#question_header").html("Question " + (trialPos + 1) + " out of " + trialCount);
-		//$("#questions").html(content[chartType].questions);
+		$("#question_header").html("Question " + (trialPos + 1) + "A out of " + trialCount);
 		
 		// reset baseTime
 		baseTime = new Date().getTime();
@@ -198,6 +218,7 @@ function loadNextTrial() {
 function updateFirstAnswerTime() {
 	// record how long it took for the participant to answer
 	nowTime = new Date().getTime();
+	experiment.saveFirstTiming(experiment.getTrialPos(), nowTime - baseTime);
 }
 
 function updateSecondAnswerTime() {

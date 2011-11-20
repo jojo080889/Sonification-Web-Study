@@ -56,7 +56,7 @@ function loadPracticePartB() {
 	trialPos = experiment.getTrialPos();
 	
 	// show answers for Part A
-	showAnswersA(nextTrial); //TODO
+	showAnswersA(nextTrial);
 
 	// update content for second part
 	$("#question_header").html("Practice Question " + (trialPos + 1) + "B out of " + trialCount);
