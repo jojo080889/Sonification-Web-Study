@@ -38,5 +38,9 @@ var content = {
 		"<input type='radio' name='practiceAnswer' value='808' />808%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='-1' />-1%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='1425' />1425%<br />"
+	},
+	"instructions": {
+		partA: "Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to which tones are highlighted.</b>",
+		partB: "Play the <b>same clip</b> below again. <b>Pay attention to which highlighted tone is shorter, and what percentage the length of the shorter highlighted tone is of the length of the longer highlighted tone.</b> For example, if the shorter tone is half as long as the longer tone, the percentage would be 50%. Try not to make a precise measurement and go with your gut instinct."
 	}
 }
