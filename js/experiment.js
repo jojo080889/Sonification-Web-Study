@@ -195,15 +195,16 @@ function loadNextTrial() {
 		bindPlayLink("#soundclip_orderpitch", practice3);
 		bindPlayLink("#soundclip_mixedpitch", practice2);
 		
-		trialPos = "demographics";
-	} else { // demographics
-		// Populate hidden form and submit it
 		if (aID == "ASSIGNMENT_ID_NOT_AVAILABLE") {
 			$("#nextTrial").attr('disabled', 'disabled');
 			$("#nextTrial").html("You must ACCEPT the HIT before you can submit the results.");
 		} else {
 			$("#nextTrial").html("Submit");
 		}
+
+		trialPos = "demographics";
+	} else { // demographics
+		// Populate hidden form and submit it
 		$("#answerData").val(experiment.getTrialAnswers());
 		$("#firstTimingData").val(experiment.getFirstTimingData());
 		$("#secondTimingData").val(experiment.getSecondTimingData());
