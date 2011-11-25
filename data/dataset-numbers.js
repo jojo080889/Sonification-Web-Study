@@ -64,7 +64,7 @@ function generateDataset(n) {
 	for (var i = 0; i < 4; i++) { // for each chart type
 		for (var j = 0; j < ratios.length; j++) { // for each ratio
 			var p = generatePair(ratios[j]);
-			var d = generateSimultaneousDataArray(p);
+			var d = generateDataArray(p);
 			dataset[i*6 + j] = d[0];
 			highlightset[i*6 + j] = d[1];
 		}

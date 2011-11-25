@@ -131,11 +131,11 @@ function loadPracticePercentageChoices(trialNum) {
 function showAnswersA(trialNum) {
 	var checkBase = "Check your answers:\n The highlighted tones were the ";
 	if (trialNum == 1) {
-		alert(checkBase + "1st and the 5th.");
+		alert(checkBase + "2nd and the 5th.");
 	} else if (trialNum == 2) {
-		alert(checkBase + "1st and the 3rd.");
+		alert(checkBase + "2nd and the 4th.");
 	} else if (trialNum == 3) {
-		alert(checkBase + "1st and the 3rd.");
+		alert(checkBase + "3rd and the 5th.");
 	}
 }
 
@@ -149,11 +149,11 @@ function showAnswersB(trialNum) {
 	var checkBase = "Check your answers:\n";
 
 	if (trialNum == 1) { // if practice1
-		alert(checkBase + "The shorter tone was A.\nThe percentage was 13.\n");
+		alert(checkBase + "The shorter tone was B.\nThe percentage was 13.\n");
 	} else if (trialNum == 2) {
 		alert(checkBase + "The shorter tone was B.\nThe percentage was 22.\n");
 	} else if (trialNum == 3) {
-		alert(checkBase + "The shorter tone was A.\nThe percentage was 37.\n"); 
+		alert(checkBase + "The shorter tone was B.\nThe percentage was 37.\n"); 
 	}
 	return true;
 }
