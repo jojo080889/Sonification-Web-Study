@@ -20,27 +20,28 @@ var content = {
 	},
 	"practice1": {
 		percentage: "What percent is the shorter of the longer?<br />" +
-		"<input type='radio' name='practiceAnswer' value='9999' />9999%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='273' />273%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='-100' />-100%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='90' />90%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='61' />61%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='87' />87%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='13' />13%<br />"
 	},
 	"practice2": {
 		percentage: "What percent is the shorter of the longer?<br />" +
-		"<input type='radio' name='practiceAnswer' value='2424' />2424%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='55' />55%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='22' />22%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='772' />772%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='-984' />-984%<br />"
+		"<input type='radio' name='practiceAnswer' value='67' />67%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='86' />86%<br />"
 	},
 	"practice3": {
 		percentage: "What percent is the shorter of the longer?<br />" +
 		"<input type='radio' name='practiceAnswer' value='37' />37%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='808' />808%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='-1' />-1%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='1425' />1425%<br />"
+		"<input type='radio' name='practiceAnswer' value='80' />80%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='92' />92%<br />" + 
+		"<input type='radio' name='practiceAnswer' value='5' />5%<br />"
 	},
 	"instructions": {
 		partA: "Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to which tones are highlighted.</b>",
-		partB: "Play the <b>same clip</b> below again. <b>Pay attention to which highlighted tone is shorter, and what percentage the length of the shorter highlighted tone is of the length of the longer highlighted tone.</b> For example, if the shorter tone is half as long as the longer tone, the percentage would be 50%. Try not to make a precise measurement and go with your gut instinct."
+		partB: "Play the <b>same clip</b> below again. <b>Pay attention to which highlighted tone is shorter, and what percentage the length of the shorter highlighted tone is of the length of the longer highlighted tone.</b>" +
+		"<p>For example:</p><ul><li>If the shorter tone is about 22/100 of the longer tone, enter 22%</li><li>If the shorter tone is about 46/100 of the longer tone, enter 46%</li><li>If the shorter tone is about 90/100 of the longer tone, enter 90%</li></ul> Try not to make a precise measurement and go with your gut instinct. <b>Responses that are clearly outside of a reasonable range may result in a rejected HIT.</b>"
 	}
 }
