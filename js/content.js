@@ -43,7 +43,7 @@ var content = {
 		"<input type='radio' name='practiceAnswer' value='5' />5%<br />"
 	},
 	"instructions": {
-		partA: "Play the clip below. It will consist of five tones. As it is playing, <b>remember which two tones are highlighted.</b>",
+		partA: "Play the clip below. You will hear five tones. <b>Remember which two tones are highlighted.</b>",
 		partB: "Play the <b>same clip</b> below again. Pay attention to: <ul><li>which highlighted tone is <b>shorter</b>,</li> <li>and what <b>percentage</b> the length of the shorter highlighted tone is of the length of the longer highlighted tone.</li></ul>" +
 		"<p>Go with your <b>gut instinct</b> and try not to make a precise measurement."
 	}
