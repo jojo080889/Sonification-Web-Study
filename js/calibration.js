@@ -5,7 +5,15 @@ $(document).ready(function() {
 	if (aID == "ASSIGNMENT_ID_NOT_AVAILABLE") {
 		$("#previewWarning").css('display', 'block');
 	}
-	
+
+	$("#calibrationAnswer").bind('keyup', function() {
+		if ($.trim($("#calibrationAnswer").val()) != "") {
+			$("#nextTrial").removeAttr("disabled");
+		} else {
+			$("#nextTrial").attr("disabled", "disabled");
+		}
+	});
+
 	$("#nextTrial").bind('click', function() {
 		var validAnswers = validateCalibration();
 		if (validAnswers) {

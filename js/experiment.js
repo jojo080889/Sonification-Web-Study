@@ -1,7 +1,7 @@
 var experiment;
 var chartType;
 var aID;
-var trialCount = 1; // CHANGE THIS TO 24
+var trialCount = 24; // CHANGE THIS TO 24
 var baseTime, firstAnswerTime;
 var trialPos;
 var nextTrial;
