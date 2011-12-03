@@ -1,4 +1,7 @@
 var mySound2, mySound3;
+var normalListened = false;
+var overtoneListened = false;
+var noiseListened = false;
 
 $(document).ready(function() {
 	var aID = $.urlParam('assignmentId');
@@ -55,16 +58,3 @@ $(document).ready(function() {
 	});
 });
 
-function validateCalibration() {
-	// make sure user enters the right number
-	var ans = $("#calibrationAnswer").val();
-	if ($.trim(ans) == "") {
-		alert("Please enter an answer!");
-		return false;
-	} else if (ans != 5) { // hard coded answer
-		alert("That is not correct. Please try again.");
-		return false;
-	} else {
-		return true;
-	}
-}

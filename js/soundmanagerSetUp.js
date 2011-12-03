@@ -16,6 +16,17 @@ function bindPlayLink(soundclipdiv, sound) {
 			$(soundclipdiv).addClass('clipPlaying');
 			sound.play({
 				onfinish: function() {
+					var sid = this.sID;
+					if (sid == 'nohighlight') {
+						normalListened = true;
+					} else if (sid == 'noise') {
+						noiseListened = true;
+					} else {
+						overtoneListened = true;
+					}
+					if ((sid == 'nohighlight' || sid == 'noise' || sid == 'overtone') && normalListened && noiseListened && overtoneListened) {
+					$("#nextTrial").removeAttr("disabled");
+					}
 					$(soundclipdiv).removeClass('clipPlaying');
 				}
 			});
