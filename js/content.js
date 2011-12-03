@@ -11,7 +11,7 @@ var content = {
 		"<p class='question'>Have you ever had any musical training or musical practice?<br /><input type='radio' name='musicAnswer' value='yes' />Yes<br /><input type='radio' name='musicAnswer' value='no' />No<br /></p>" + 
 		"<p class='question'>What would you say is your musical skill level?<br /><input type='radio' name='musicSkillAnswer' value='1' />1 (Not very skilled)<br /><input type='radio' name='musicSkillAnswer' value='2' />2<br /><input type='radio' name='musicSkillAnswer' value='3' />3<br /><input type='radio' name='musicSkillAnswer' value='4' />4<br /><input type='radio' name='musicSkillAnswer' value='5' />5 (Very skilled)<br /></p><hr />" + 
 		"<p>Some of the sound clips you heard used the same pitch for all of its tones (Type 1), while other sound clips used varying pitches that may have been in order (Type 2) or mixed up (Type 3).</p>" +
-		"<p>How much did you like or dislike each type?</p>" +
+		"<p>How preferable or not preferable did you find each type?</p>" +
 		"<table id='demo_examples'><tr><td><p class='tonelabel'>Same pitch (Type 1)</p><p id='soundclip_samepitch' class='soundclip'><span id='loading'>Loading...</span></p></td>" + 
 		"<td><p class='tonelabel'>Ordered pitches (Type 2)</p><p id='soundclip_orderpitch' class='soundclip'><span id='loading'>Loading...</span></p></td>" + 
 		"<td><p class='tonelabel'>Mixed pitches (Type 3)</p><p id='soundclip_mixedpitch' class='soundclip'><span id='loading'>Loading...</span></p></td></tr>" +
