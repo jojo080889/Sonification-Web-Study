@@ -40,7 +40,7 @@ body {
 	-webkit-border-radius: 5px;
 	color: white;
 	font-size: 13px;
-	height: 18px;
+	height: 30px;
 	background-repeat: no-repeat;
 	background-position: 3px;
 	cursor: pointer;
@@ -57,9 +57,13 @@ body {
 }
 
 .clipDisabled {
-	background: #369 url('soundmanager/images/icon_play_disabled.png');
+	background: #aaa url('soundmanager/images/icon_play.png');
 	background-repeat: no-repeat;
 	background-position: 3px;
+	cursor: default;
+}
+.soundclip.clipDisabled:hover {
+	background-color: #aaa;
 }
 
 .soundclip #loading {
