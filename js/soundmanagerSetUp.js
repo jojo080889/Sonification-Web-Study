@@ -42,6 +42,9 @@ function bindExperimentPlayLink() {
 	var soundclipdiv = "#soundclip";
 	// set up SoundManager
 	$(soundclipdiv).bind('click', function() {
+		if ((sound.sID + "").indexOf("practice") >= 0) {
+			$("#incorrectMessage").hide();
+		}
 		if (sound.paused || sound.playState == 0) { //stopped or paused
 			$(soundclipdiv).addClass('clipPlaying');
 			mySound.play({

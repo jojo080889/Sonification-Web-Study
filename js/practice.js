@@ -58,6 +58,7 @@ function loadPracticePartB() {
 	
 	// show answers for Part A
 	if (!showAnswersA(nextTrial)) { return false; };
+	$("#incorrectMessage").hide();
 	mySound.questionState = 1;
 	soundManager.stop(mySoundID);
 	$("#soundclip").removeClass('clipPlaying');
@@ -80,6 +81,7 @@ function loadPracticePartB() {
 function loadNextPractice() {	
 	trialPos = experiment.getTrialPos();
 	if (!showAnswersB(nextTrial)) { return false; }
+	$("#incorrectMessage").hide();
 	mySound.questionState = 2;
 	soundManager.stop(mySoundID);
 	$("#soundclip").removeClass('clipPlaying');
@@ -198,5 +200,6 @@ function showAnswersB(trialNum) {
 }
 
 function showIncorrectMessage() {
-		alert("Some of your responses are incorrect.\nBecause this is practice, you can listen to the clip and try again.");
+		$("#incorrectMessage").show();
+		//alert("Some of your responses are incorrect.\nPlease try again.");
 }

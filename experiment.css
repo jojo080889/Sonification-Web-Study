@@ -81,10 +81,11 @@ body {
 }
 
 #incorrectMessage {
-	text-align: center;
+	text-align: right;
 	font-size: 13px;
 	color: red;
 	display: none;
+	float: right;
 }
 
 .tonelabel {
