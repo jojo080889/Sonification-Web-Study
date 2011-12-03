@@ -1,7 +1,7 @@
 var content = {
 	'highlight': {
 		description: "",
-		questions: "<p class='question'>Which tones were highlighted? <label for='toneA' id='toneAlabel'>A </label><select id='toneA'><option value='1'>1st</option><option value ='2'>2nd</option><option value='3'>3rd</option><option value='4'>4th</option><option value='5'>5th</option><option value='unsure'>Not sure</option></select><label for='toneB'>B </label><select id='toneB'><option value='1'>1st</option><option value='2'>2nd</option><option value='3'>3rd</option><option value='4'>4th</option><option value='5'>5th</option><option value='unsure'>Not sure</option></select></p><p class='question'>Which tone is shorter? <select id='shorterTone'><option>A</option><option>B</option><option value='unsure'>Not sure</option></select></p><p class='question'>What percent is the shorter of the longer? <input type='text' size='3' maxlength='3' id='percentAnswer' />% <i id='unsureInstructions'>Type '0' if you're unsure</i></p>"
+		questions: "<p class='question'>Which tones were highlighted? <label for='toneA' id='toneAlabel'>A </label><select id='toneA'><option value='1'>1st</option><option value ='2'>2nd</option><option value='3'>3rd</option><option value='4'>4th</option><option value='5'>5th</option><option value='unsure'>Not sure</option></select><label for='toneB'>B </label><select id='toneB'><option value='1'>1st</option><option value='2'>2nd</option><option value='3'>3rd</option><option value='4'>4th</option><option value='5'>5th</option><option value='unsure'>Not sure</option></select></p><p class='question'>Which tone is shorter? <select id='shorterTone'><option>A</option><option>B</option><option value='unsure'>Not sure</option></select></p><p class='question'>What percent is the shorter of the longer? <input type='text' size='3' maxlength='3' id='percentAnswer' />% <span id='examples'>For example, if the shorter tone is about 22/100 of the longer tone, enter 22</span><i id='unsureInstructions'>Type '0' if you're unsure</i></p>"
 	},
 	'demographics': {
 		description: "Thank you for working on this HIT. Please take a moment to fill out some information about yourself and your preferences.<b>Your answers have NOT been submitted yet -- please press submit below to finish.</b>", 
@@ -20,6 +20,7 @@ var content = {
 	},
 	"practice1": {
 		percentage: "What percent is the shorter of the longer?<br />" +
+		"<span id='examples'>For example, if the shorter tone is <sup>1</sup>&frasl;<sub>4</sub> as long as the longer tone, pick '25%'.</span>" +
 		"<input type='radio' name='practiceAnswer' value='90' />90%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='61' />61%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='87' />87%<br />" + 
@@ -27,6 +28,7 @@ var content = {
 	},
 	"practice2": {
 		percentage: "What percent is the shorter of the longer?<br />" +
+		"<span id='examples'>For example, if the shorter tone is <sup>1</sup>&frasl;<sub>4</sub> as long as the longer tone, pick '25%'.</span>" +
 		"<input type='radio' name='practiceAnswer' value='55' />55%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='22' />22%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='67' />67%<br />" + 
@@ -34,14 +36,15 @@ var content = {
 	},
 	"practice3": {
 		percentage: "What percent is the shorter of the longer?<br />" +
+		"<span id='examples'>For example, if the shorter tone is <sup>1</sup>&frasl;<sub>4</sub> as long as the longer tone, pick '25%'.</span>" +
 		"<input type='radio' name='practiceAnswer' value='37' />37%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='80' />80%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='92' />92%<br />" + 
 		"<input type='radio' name='practiceAnswer' value='5' />5%<br />"
 	},
 	"instructions": {
-		partA: "Play the clip below. It will consist of five tones. As it's playing, <b>pay attention to which tones are highlighted.</b>",
-		partB: "Play the <b>same clip</b> below again. <b>Pay attention to which highlighted tone is shorter, and what percentage the length of the shorter highlighted tone is of the length of the longer highlighted tone.</b>" +
-		"<p>For example:</p><ul><li>If the shorter tone is about 22/100 of the longer tone, enter 22%</li><li>If the shorter tone is about 46/100 of the longer tone, enter 46%</li><li>If the shorter tone is about 90/100 of the longer tone, enter 90%</li></ul> Try not to make a precise measurement and go with your gut instinct. <b>Responses that are clearly outside of a reasonable range may result in a rejected HIT.</b>"
+		partA: "Play the clip below. It will consist of five tones. As it is playing, <b>remember which two tones are highlighted.</b>",
+		partB: "Play the <b>same clip</b> below again. Pay attention to: <ul><li>which highlighted tone is <b>shorter</b>,</li> <li>and what <b>percentage</b> the length of the shorter highlighted tone is of the length of the longer highlighted tone.</li></ul>" +
+		"<p>Go with your <b>gut instinct</b> and try not to make a precise measurement."
 	}
 }

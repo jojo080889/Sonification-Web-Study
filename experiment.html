@@ -14,17 +14,18 @@
 <body>
 
 <h1 id="question_header">Question 1 out of 24</h1>
+<h2 id="part_header">Part A</h2>
 <p id="description">
 </p>
 <p id="playInfo">
-You are only allowed to listen to the clip 1 time.
+You are only allowed to listen to the clip once.
 </p>
 <p id="soundclip" class="soundclip">
 	<span id="loading">Loading...</span>
 </p>
 <div id="questions">
 	<p id='whichHighlight' class='question'>Which tones were highlighted? 
-		<label for='toneA' id="toneAlabel">A</label>
+		<label for='toneA' id="toneAlabel"></label>
 		<select id='toneA'>
 			<option value="1">1st</option>
 			<option value="2">2nd</option>
@@ -33,7 +34,7 @@ You are only allowed to listen to the clip 1 time.
 			<option value="5">5th</option>
 			<option value="unsure">Not sure</option>
 		</select>
-		<label for='toneB'>B</label>
+		<label for='toneB'></label>
 		<select id='toneB'>
 			<option value="1">1st</option>
 			<option value="2">2nd</option>
@@ -43,15 +44,17 @@ You are only allowed to listen to the clip 1 time.
 			<option value="unsure">Not sure</option>
 		</select>
 	</p>
-	<p id='whichShorter' class='question'>Which tone is shorter? 
+	<p id='whichShorter' class='question'>Which highlighted tone is shorter? 
 		<select id='shorterTone'>
-			<option>A</option>
-			<option>B</option>
+			<option value="A">First highlighted tone</option>
+			<option value="B">Second highlighted tone</option>
 			<option value="unsure">Not sure</option>
 		</select>
 	</p>
 	<p id='percentage' class='question'>What percent is the shorter of the longer?
-		<input type="text" id="percentAnswer" size="3" maxLength="3" />% <i id='unsureInstructions'>Type '0' if you're unsure</i><br />
+		<input type="text" id="percentAnswer" size="3" maxLength="3" />%
+		<span id="examples">For example, if the shorter tone is <sup>1</sup>&frasl;<sub>4</sub> as long as the longer tone, enter '25'.</span>
+		<i id='unsureInstructions'>Type '0' if you're unsure</i>
 	</p>
 </div>
 <p id="previewWarning">This is a PREVIEW. Please accept the HIT first.</p>

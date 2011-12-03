@@ -32,7 +32,8 @@ $(document).ready(function() {
 
 	// load question header and instructions
 	trialPos = experiment.getTrialPos();
-	$("#question_header").html("Question " + (trialPos + 1) + "A out of " + trialCount);
+	$("#question_header").html("Question " + (trialPos + 1) + " out of " + trialCount);
+	$("#part_header").html("Part A");
 	$("#description").html(content["instructions"].partA);
 
 	// set up soundmanager
@@ -56,7 +57,7 @@ function loadPartB() {
 	trialPos = experiment.getTrialPos();
 
 	// update content for second part
-	$("#question_header").html("Question " + (trialPos + 1) + "B out of " + trialCount);
+	$("#part_header").html("Part B");
 	$("#description").html(content["instructions"].partB);
 	$("#whichHighlight").hide();
 	$("#nextTrial").unbind();
@@ -153,13 +154,15 @@ function loadNextTrial() {
 		$("#nextTrial").attr("disabled", "disabled");
 
 		// replace content
-		$("#question_header").html("Question " + (trialPos + 1) + "A out of " + trialCount);
-		
+		$("#question_header").html("Question " + (trialPos + 1) + " out of " + trialCount);
+		$("#part_header").html("Part B");
+
 		// reset baseTime
 		baseTime = new Date().getTime();
 	} else if (trialPos == experiment.END_OF_TRIALS) { // last trial
 		// Replace with demographics content
 		$("#question_header").html("Almost done!");
+		$("#part_header").hide();
 		$("#description").html(content['demographics'].description);
 		$("#questions").html(content['demographics'].questions);
 		$("#soundclip").hide();

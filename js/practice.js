@@ -32,7 +32,8 @@ $(document).ready(function() {
 
 	// load question header and instructions
 	trialPos = experiment.getTrialPos();
-	$("#question_header").html("Practice Question " + (trialPos + 1) + "A out of " + trialCount);
+	$("#question_header").html("Practice Question " + (trialPos + 1) + " out of " + trialCount);
+	$("#part_header").html("Part A");
 	$("#description").html(content["instructions"].partA);
 
 	// set up soundmanager
@@ -56,10 +57,14 @@ function loadPracticePartB() {
 	trialPos = experiment.getTrialPos();
 	
 	// show answers for Part A
-	showAnswersA(nextTrial);
+	if (!showAnswersA(nextTrial)) { return false; };
+	mySound.questionState = 1;
+	soundManager.stop(mySoundID);
+	$("#soundclip").removeClass('clipPlaying');
+	disableSound("#soundclip");
 
 	// update content for second part
-	$("#question_header").html("Practice Question " + (trialPos + 1) + "B out of " + trialCount);
+	$("#part_header").html("Part B");
 	$("#description").html(content["instructions"].partB);
 	$("#whichHighlight").hide();
 	$("#nextTrial").unbind();
@@ -75,6 +80,10 @@ function loadPracticePartB() {
 function loadNextPractice() {	
 	trialPos = experiment.getTrialPos();
 	if (!showAnswersB(nextTrial)) { return false; }
+	mySound.questionState = 2;
+	soundManager.stop(mySoundID);
+	$("#soundclip").removeClass('clipPlaying');
+	disableSound("#soundclip");
 	
 	nextTrial = experiment.getNextTrial();
 	
@@ -116,7 +125,8 @@ function loadNextPractice() {
 		$("#nextTrial").attr("disabled", "disabled");
 
 		// replace content
-		$("#question_header").html("Practice Question " + (trialPos + 1) + "A out of " + trialCount);
+		$("#question_header").html("Practice Question " + (trialPos + 1) + " out of " + trialCount);
+		$("#part_header").html("Part A");
 		loadPracticePercentageChoices(nextTrial);
 	} else { 
 		// move to real questions
@@ -128,32 +138,65 @@ function loadPracticePercentageChoices(trialNum) {
 	$("#percentage").html(content["practice" + trialNum].percentage);
 }
 
+// Also validate the answers.
 function showAnswersA(trialNum) {
-	var checkBase = "Check your answers:\n The highlighted tones were the ";
+	var toneA = $("#toneA").val();
+	var toneB = $("#toneB").val();
+	var correct = false;
 	if (trialNum == 1) {
-		alert(checkBase + "2nd and the 5th.");
+		if ((toneA == 2 && toneB == 5) || (toneA == 5 && toneB == 2)) {
+			correct = true;
+		}
 	} else if (trialNum == 2) {
-		alert(checkBase + "2nd and the 4th.");
+		if ((toneA == 2 && toneB == 4) || (toneA == 4 && toneB == 2)) {
+			correct = true;
+		}
 	} else if (trialNum == 3) {
-		alert(checkBase + "3rd and the 5th.");
+		if ((toneA == 3 && toneB == 5) || (toneA == 5 && toneB == 3)) {
+			correct = true;
+		}
 	}
+	if (!correct) {
+		showIncorrectMessage();
+		mySound.questionState = 0;
+		disableSound("#soundclip");
+		enableExperimentSound("#soundclip");
+	}
+	return correct;
 }
 
+// Also validate the answers.
 function showAnswersB(trialNum) {
+	var correct = false;
+	var shorterTone = $("#shorterTone").val();
 	var practiceAnswer = $("input[@name=practiceAnswer]:checked").val();
 	if (practiceAnswer == undefined) {
 		alert("Please answer all the questions!");
 		return false;
 	}
 	
-	var checkBase = "Check your answers:\n";
-
 	if (trialNum == 1) { // if practice1
-		alert(checkBase + "The shorter tone was B.\nThe percentage was 13.\n");
+		if (shorterTone == "B" && practiceAnswer == 13) {
+			correct = true;
+		} 
 	} else if (trialNum == 2) {
-		alert(checkBase + "The shorter tone was B.\nThe percentage was 22.\n");
+		if (shorterTone == "B" && practiceAnswer == 22) {
+			correct = true;
+		}
 	} else if (trialNum == 3) {
-		alert(checkBase + "The shorter tone was B.\nThe percentage was 37.\n"); 
+		if (shorterTone == "B" && practiceAnswer == 37) {
+			correct = true;
+		}
 	}
-	return true;
+	if (!correct) {
+		showIncorrectMessage();
+		mySound.questionState = 1;
+		disableSound("#soundclip");
+		enableExperimentSound("#soundclip");
+	}
+	return correct;
+}
+
+function showIncorrectMessage() {
+		alert("Some of your responses are incorrect.\nBecause this is practice, you can listen to the clip and try again.");
 }
