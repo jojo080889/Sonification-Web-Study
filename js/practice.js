@@ -116,9 +116,9 @@ function loadNextPractice() {
 		$("#whichShorter").hide();
 		$("#percentage").hide();
 
-		$("#toneA").val("1");
-		$("#toneB").val("1");
-		$("#shorterTone").val("A");
+		$("#toneA").val("noAnswer");
+		$("#toneB").val("noAnswer");
+		$("#shorterTone").val("noAnswer");
 		$("#description").html(content["instructions"].partA);
 
 		// rebind next button
@@ -145,6 +145,10 @@ function showAnswersA(trialNum) {
 	var toneA = $("#toneA").val();
 	var toneB = $("#toneB").val();
 	var correct = false;
+	if (toneA == "noAnswer" || toneB == "noAnswer") {
+		alert("Please answer all the questions!");
+		return false;
+	}
 	if (trialNum == 1) {
 		if ((toneA == 2 && toneB == 5) || (toneA == 5 && toneB == 2)) {
 			correct = true;
@@ -172,7 +176,7 @@ function showAnswersB(trialNum) {
 	var correct = false;
 	var shorterTone = $("#shorterTone").val();
 	var practiceAnswer = $("input[@name=practiceAnswer]:checked").val();
-	if (practiceAnswer == undefined) {
+	if (practiceAnswer == undefined || shorterTone == "noAnswer") {
 		alert("Please answer all the questions!");
 		return false;
 	}

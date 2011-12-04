@@ -55,6 +55,13 @@ $(document).ready(function() {
 
 function loadPartB() {
 	trialPos = experiment.getTrialPos();
+	var toneA = $("#toneA").val();
+	var toneB = $("#toneB").val();
+
+	if (toneA == "noAnswer" || toneB == "noAnswer") {
+		alert("Please answer all the questions!");
+		return false;
+	}
 
 	// update content for second part
 	$("#part_header").html("Part B");
@@ -142,9 +149,9 @@ function loadNextTrial() {
 		$("#whichShorter").hide();
 		$("#percentage").hide();
 	
-		$("#toneA").val("1");
-		$("#toneB").val("1");
-		$("#shorterTone").val("A");
+		$("#toneA").val("noAnswer");
+		$("#toneB").val("noAnswer");
+		$("#shorterTone").val("noAnswer");
 		$("#percentage input").val("");
 		$("#description").html(content["instructions"].partA);
 
@@ -233,7 +240,8 @@ function updateSecondAnswerTime() {
 function validateAnswers() {
 	// make sure user enters a number for the percentage answer
 	var percentAnswer = $("#percentAnswer").val();
-	if ($.trim(percentAnswer) == "") {
+	var shortTone = $("#shorterTone").val();
+	if ($.trim(percentAnswer) == "" || shortTone == "noAnswer") {
 		alert("Please answer all the questions!");
 		return false;
 	} else if (percentAnswer != parseInt(percentAnswer)) {
