@@ -256,7 +256,7 @@ function validateAnswers() {
 function validateDemographics() {
 	var checked = $("input:checked");
 	var ageAnswer = $.trim($("#ageAnswer").val());
-	if (checked.length != 7 || ageAnswer == "") {
+	if (checked.length != 4 || ageAnswer == "") {
 		alert("Please answer all the questions!");
 		return false;
 	}
