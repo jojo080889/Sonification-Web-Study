@@ -2,22 +2,30 @@ var chartTypeWords = {
 	'pitch': {
 		attribute: "pitch",
 		smallAdj: "lower",
-		bigAdj: "higher"
+		bigAdj: "higher",
+		trialNum: 24,
+		practiceNum: 3,
 	},
 	'duration': {
 		attribute: "length",
 		smallAdj: "shorter",
-		bigAdj: "longer"
+		bigAdj: "longer",
+		trialNum: 24,
+		practiceNum: 3
 	},
 	'tempo': {
 		attribute: "speed",
 		smallAdj: "slower",
-		bigAdj: "faster"
+		bigAdj: "faster",
+		trialNum: 18,
+		practiceNum: 3 
 	},
 	'volume': {
 		attribute: "loudness",
 		smallAdj: "quieter",
-		bigAdj: "louder"
+		bigAdj: "louder",
+		trialNum: 12,
+		practiceNum: 3
 	}
 };
 

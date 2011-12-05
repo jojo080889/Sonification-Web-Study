@@ -208,10 +208,3 @@ function showIncorrectMessage() {
 		$("#incorrectMessage").show();
 		//alert("Some of your responses are incorrect.\nPlease try again.");
 }
-
-
-function fillInQuestionText() {
-	$(".smallAdj").html(chartTypeWords[chartType]['smallAdj']);
-	$(".bigAdj").html(chartTypeWords[chartType]['bigAdj']);
-	$(".chartAttribute").html(chartTypeWords[chartType]['attribute']);
-}

@@ -19,3 +19,9 @@ $.urlParam = function(name){
 	if (!results) { return 0; }
 	return results[1] || 0;
 };
+
+function fillInQuestionText() {
+	$(".smallAdj").html(chartTypeWords[chartType]['smallAdj']);
+	$(".bigAdj").html(chartTypeWords[chartType]['bigAdj']);
+	$(".chartAttribute").html(chartTypeWords[chartType]['attribute']);
+}

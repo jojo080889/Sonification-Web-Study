@@ -262,8 +262,3 @@ function validateDemographics() {
 	return true;
 }
 
-function fillInQuestionText() {
-	$(".smallAdj").html(chartTypeWords[chartType]['smallAdj']);
-	$(".bigAdj").html(chartTypeWords[chartType]['bigAdj']);
-	$(".chartAttribute").html(chartTypeWords[chartType]['attribute']);
-}

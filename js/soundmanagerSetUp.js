@@ -19,12 +19,10 @@ function bindPlayLink(soundclipdiv, sound) {
 					var sid = this.sID;
 					if (sid == 'nohighlight') {
 						normalListened = true;
-					} else if (sid == 'noise') {
-						noiseListened = true;
-					} else {
-						overtoneListened = true;
-					}
-					if ((sid == 'nohighlight' || sid == 'noise' || sid == 'overtone') && normalListened && noiseListened && overtoneListened) {
+					} else if (sid == 'highlight') {
+						highlightListened = true;
+					} 
+					if ((sid == 'nohighlight' || sid == 'highlight') && normalListened && highlightListened) {
 					$("#nextTrial").removeAttr("disabled");
 					}
 					$(soundclipdiv).removeClass('clipPlaying');
