@@ -94,7 +94,7 @@ function loadNextPractice() {
 	// get updated trial number
 	trialPos = experiment.getTrialPos();
 	if (trialPos != experiment.END_OF_TRIALS) {
-		var nextTrialURL = "sounds/' + chartType + '/practice" + nextTrial + ".mp3";
+		var nextTrialURL = "sounds/" + chartType + "/practice" + nextTrial + ".mp3";
 		
 		// reset sound player
 		soundManager.destroySound(mySoundID);
@@ -122,6 +122,7 @@ function loadNextPractice() {
 		$("#toneB").val("noAnswer");
 		$("#shorterTone").val("noAnswer");
 		$("#description").html(content["instructions"].partA);
+		resetPracticePercentageAnswer();
 
 		// rebind next button
 		$("#nextTrial").unbind();
@@ -138,8 +139,19 @@ function loadNextPractice() {
 	}
 };
 
+function resetPracticePercentageAnswer() {
+	for (var i = 1; i <= 4; i++) {
+		$("#practiceAnswer" + i).removeAttr("checked");
+	}
+}
+
 function loadPracticePercentageChoices(trialNum) {
-	$("#percentage #practiceOptions").html(content["practice" + trialNum].percentage);
+	var practiceOptions = chartTypeWords[chartType]['practiceOptions'];
+	var optionArray = practiceOptions[trialNum - 1][0];
+	for (var i = 0; i < optionArray.length; i++) {
+		$("#practiceOptions #practiceAnswer" + (i + 1)).val("" + optionArray[i]);
+		$("#practiceOptions #practiceAnswerLabel" + (i + 1)).html(optionArray[i] + "%");
+	}
 }
 
 // Also validate the answers.
@@ -151,18 +163,11 @@ function showAnswersA(trialNum) {
 		alert("Please answer all the questions!");
 		return false;
 	}
-	if (trialNum == 1) {
-		if ((toneA == 2 && toneB == 5) || (toneA == 5 && toneB == 2)) {
-			correct = true;
-		}
-	} else if (trialNum == 2) {
-		if ((toneA == 2 && toneB == 4) || (toneA == 4 && toneB == 2)) {
-			correct = true;
-		}
-	} else if (trialNum == 3) {
-		if ((toneA == 3 && toneB == 5) || (toneA == 5 && toneB == 3)) {
-			correct = true;
-		}
+	var practiceOptions = chartTypeWords[chartType]['practiceOptions'];
+	var toneArray = practiceOptions[trialNum - 1][1];
+	if ((toneA == toneArray[0] && toneB == toneArray[1]) ||
+		(toneA == toneArray[1] && toneB == toneArray[0])) {
+		correct = true;	
 	}
 	if (!correct) {
 		showIncorrectMessage();
@@ -182,20 +187,15 @@ function showAnswersB(trialNum) {
 		alert("Please answer all the questions!");
 		return false;
 	}
-	
-	if (trialNum == 1) { // if practice1
-		if (shorterTone == "B" && practiceAnswer == 13) {
-			correct = true;
-		} 
-	} else if (trialNum == 2) {
-		if (shorterTone == "B" && practiceAnswer == 22) {
-			correct = true;
-		}
-	} else if (trialNum == 3) {
-		if (shorterTone == "B" && practiceAnswer == 37) {
-			correct = true;
-		}
+
+	var practiceOptions = chartTypeWords[chartType]['practiceOptions'];
+	var correctArray = practiceOptions[trialNum - 1][2];
+	var optionsArray = practiceOptions[trialNum - 1][0];
+	var correctPer = optionsArray[correctArray[1]];
+	if (shorterTone == correctArray[0] && practiceAnswer == correctPer) {
+		correct = true;
 	}
+	
 	if (!correct) {
 		showIncorrectMessage();
 		mySound.questionState = 1;
@@ -207,5 +207,4 @@ function showAnswersB(trialNum) {
 
 function showIncorrectMessage() {
 		$("#incorrectMessage").show();
-		//alert("Some of your responses are incorrect.\nPlease try again.");
 }

@@ -1,31 +1,36 @@
 var chartTypeWords = {
+	// practiceOptions format: array of [array of possible options, array of highlighted tones, index of correct percentage], where each index corresponds to the practiceX.mp3 filenames.
 	'pitch': {
 		attribute: "pitch",
 		smallAdj: "lower",
 		bigAdj: "higher",
 		trialNum: 24,
 		practiceNum: 3,
+		practiceOptions: [[[80, 93, 78, 22], [1, 4], ["B", 3]], [[3, 83, 21, 15], [2, 4], ["B", 1]], [[37, 98, 83, 72], [2, 3], ["B", 0]]]
 	},
 	'duration': {
 		attribute: "length",
 		smallAdj: "shorter",
 		bigAdj: "longer",
 		trialNum: 24,
-		practiceNum: 3
+		practiceNum: 3,
+		practiceOptions: [[[90, 61, 87, 13], [2, 5], ["B", 3]], [[55, 22, 67, 86], [2, 4], ["B", 1]], [[37, 80, 92, 5], [3, 5], ["B", 0]]]
 	},
 	'tempo': {
 		attribute: "speed",
 		smallAdj: "slower",
 		bigAdj: "faster",
 		trialNum: 18,
-		practiceNum: 3 
+		practiceNum: 3,
+		practiceOptions: [[[10, 68, 99, 96], [2, 3], ["A", 1]], [[83, 73, 37, 4], [1, 4], ["A", 2]], [[52, 1, 80, 98], [2, 4], ["A", 0]]]
 	},
 	'volume': {
 		attribute: "loudness",
 		smallAdj: "quieter",
 		bigAdj: "louder",
 		trialNum: 12,
-		practiceNum: 3
+		practiceNum: 3,
+		practiceOptions: [[[3, 98, 10, 52], [2, 3], ["A", 3]], [[10, 5, 68, 8],[3, 5], ["B", 2]], [[90, 37, 84, 79], [4, 5], ["A", 1]]]
 	}
 };
 
@@ -45,24 +50,6 @@ var content = {
 		"<tr id='preferences'><td><p class='question'>How would you rate Type 1? <br /><input type='radio' name='samePitchPrefer' value='1' />1 (Not preferable)<br /><input type='radio' name='samePitchPrefer' value='2' />2<br /><input type='radio' name='samePitchPrefer' value='3' />3 (Neutral)<br /><input type='radio' name='samePitchPrefer' value='4' />4<br /><input type='radio' name='samePitchPrefer' value='5' />5 (Preferable)<br /></p></td>" + 
 		"<td><p class='question'>How would you rate Type 2? <br /><input type='radio' name='orderPitchPrefer' value='1' />1 (Not preferable)<br /><input type='radio' name='orderPitchPrefer' value='2' />2<br /><input type='radio' name='orderPitchPrefer' value='3' />3 (Neutral)<br /><input type='radio' name='orderPitchPrefer' value='4' />4<br /><input type='radio' name='orderPitchPrefer' value='5' />5 (Preferable)<br /></p></td>" + 
 		"<td><p class='question'>How would you rate Type 3? <br /><input type='radio' name='mixedPitchPrefer' value='1' />1 (Not preferable)<br /><input type='radio' name='mixedPitchPrefer' value='2' />2<br /><input type='radio' name='mixedPitchPrefer' value='3' />3 (Neutral)<br /><input type='radio' name='mixedPitchPrefer' value='4' />4<br /><input type='radio' name='mixedPitchPrefer' value='5' />5 (Preferable)<br /></p></td></tr></table>" 
-	},
-	"practice1": {
-		percentage: "<input type='radio' name='practiceAnswer' value='90' />90%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='61' />61%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='87' />87%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='13' />13%<br />"
-	},
-	"practice2": {
-		percentage: "<input type='radio' name='practiceAnswer' value='55' />55%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='22' />22%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='67' />67%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='86' />86%<br />"
-	},
-	"practice3": {
-		percentage: "<input type='radio' name='practiceAnswer' value='37' />37%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='80' />80%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='92' />92%<br />" + 
-		"<input type='radio' name='practiceAnswer' value='5' />5%<br />"
 	},
 	"instructions": {
 		partA: "Play the clip below. You will hear five tones. <b>Remember which two tones are highlighted.</b>",
