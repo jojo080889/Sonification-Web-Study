@@ -1,14 +1,12 @@
 var experiment;
-var chartType;
-var aID;
+// get values from url string
+var chartType = $.urlParam("chartType");
+var aID = $.urlParam("assignmentId");
 var trialCount = 3; // CHANGE THIS TO 3
 var trialPos;
 var nextTrial;
 
 $(document).ready(function() {
-	// get values from url string
-	chartType = $.urlParam("chartType");
-	aID = $.urlParam("assignmentId");
 	
 	// create practice experiment object
 	experiment = new SonificationExperiment(chartType, trialCount);
@@ -35,6 +33,9 @@ $(document).ready(function() {
 	$("#question_header").html("Practice Question " + (trialPos + 1) + " out of " + trialCount);
 	$("#part_header").html("Part A");
 	$("#description").html(content["instructions"].partA);
+
+	// load question text
+	fillInQuestionText();
 
 	// set up soundmanager
 	mySoundID = 'practice' + nextTrial;
@@ -137,7 +138,7 @@ function loadNextPractice() {
 };
 
 function loadPracticePercentageChoices(trialNum) {
-	$("#percentage").html(content["practice" + trialNum].percentage);
+	$("#percentage #practiceOptions").html(content["practice" + trialNum].percentage);
 }
 
 // Also validate the answers.
@@ -206,4 +207,11 @@ function showAnswersB(trialNum) {
 function showIncorrectMessage() {
 		$("#incorrectMessage").show();
 		//alert("Some of your responses are incorrect.\nPlease try again.");
+}
+
+
+function fillInQuestionText() {
+	$(".smallAdj").html(chartTypeWords[chartType]['smallAdj']);
+	$(".bigAdj").html(chartTypeWords[chartType]['bigAdj']);
+	$(".chartAttribute").html(chartTypeWords[chartType]['attribute']);
 }

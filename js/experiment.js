@@ -1,15 +1,13 @@
 var experiment;
-var chartType;
-var aID;
+// get values from url string
+var chartType = $.urlParam("chartType");
+var aID = $.urlParam("assignmentId");
 var trialCount = 24; // CHANGE THIS TO 24
 var baseTime, firstAnswerTime;
 var trialPos;
 var nextTrial;
 
 $(document).ready(function() {
-	// get values from url string
-	chartType = $.urlParam("chartType");
-	aID = $.urlParam("assignmentId");
 	
 	// create experiment object
 	experiment = new SonificationExperiment(chartType, trialCount);
@@ -36,12 +34,15 @@ $(document).ready(function() {
 	$("#part_header").html("Part A");
 	$("#description").html(content["instructions"].partA);
 
+	// load question text
+	fillInQuestionText();
+
 	// set up soundmanager
 	mySoundID = nextTrial;
 	soundManager.onready(function() {
 		mySound = soundManager.createSound({
 			id: mySoundID,
-			url: 'sounds/' + nextTrial + '.mp3',
+			url: 'sounds/' + chartType + '/' + nextTrial + '.mp3',
 			autoLoad: true,
 			onload: function() {
 				$("#loading").hide();
@@ -259,4 +260,10 @@ function validateDemographics() {
 		return false;
 	}
 	return true;
+}
+
+function fillInQuestionText() {
+	$(".smallAdj").html(chartTypeWords[chartType]['smallAdj']);
+	$(".bigAdj").html(chartTypeWords[chartType]['bigAdj']);
+	$(".chartAttribute").html(chartTypeWords[chartType]['attribute']);
 }
