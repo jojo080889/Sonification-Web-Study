@@ -4,7 +4,7 @@ var chartTypeWords = {
 		attribute: "pitch",
 		smallAdj: "lower",
 		bigAdj: "higher",
-		trialNum: 1,
+		trialNum: 24,
 		practiceNum: 3,
 		practiceOptions: [[[80, 93, 78, 22], [1, 4], ["B", 3]], [[3, 83, 21, 15], [2, 4], ["B", 1]], [[37, 98, 83, 72], [2, 3], ["B", 0]]]
 	},
