@@ -2,12 +2,13 @@ var experiment;
 // get values from url string
 var chartType = $.urlParam("chartType");
 var aID = $.urlParam("assignmentId");
-var trialCount = 3; // CHANGE THIS TO 3
+var trialCount;
 var trialPos;
 var nextTrial;
 
 $(document).ready(function() {
-	
+	trialCount = chartTypeWords[chartType]['practiceNum'];
+
 	// create practice experiment object
 	experiment = new SonificationExperiment(chartType, trialCount);
 	
@@ -42,7 +43,7 @@ $(document).ready(function() {
 	soundManager.onready(function() {
 		mySound = soundManager.createSound({
 			id: mySoundID,
-			url: 'sounds/practice' + nextTrial + '.mp3',
+			url: 'sounds/' + chartType + '/practice' + nextTrial + '.mp3',
 			autoLoad: true,
 			onload: function() {
 				$("#loading").hide();
@@ -93,7 +94,7 @@ function loadNextPractice() {
 	// get updated trial number
 	trialPos = experiment.getTrialPos();
 	if (trialPos != experiment.END_OF_TRIALS) {
-		var nextTrialURL = "sounds/practice" + nextTrial + ".mp3";
+		var nextTrialURL = "sounds/' + chartType + '/practice" + nextTrial + ".mp3";
 		
 		// reset sound player
 		soundManager.destroySound(mySoundID);
