@@ -32,5 +32,12 @@ function validateDemographics() {
 		alert("Please answer all the questions!");
 		return false;
 	}
+	if (ageAnswer != parseInt(ageAnswer)) {
+		alert("Your age must be a whole number.");
+		return false;
+	} else if (parseInt(ageAnswer) <= 0) {
+		alert("Your age must be greater than 0.");
+		return false;
+	}
 	return true;
 }
