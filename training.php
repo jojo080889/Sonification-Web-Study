@@ -44,20 +44,6 @@
 		<span id="loading">Loading...</span>
 	</p>
 </div>
-<div id="duration_instructions">
-	<p>
-	The five tones may either be represented by <b>single beeps</b> of varying duration, or by <b>pairs of beeps</b> signalling the beginning and end of a length of time. Below are examples of the different sound clips you will hear:
-	</p>
-	<p class="tonelabel">Single beeps</p>
-	<p id="soundclip_duration_single" class="soundclip">
-		<span id="loading">Loading...</span>
-	</p>
-	<p class="tonelabel">Pair of beeps</p>
-	<p id="soundclip_duration_two" class="soundclip">
-		<span id="loading">Loading...</span>
-	</p>
-</div>
-</div>
 <div id="questions">
 </div>
 <p id="previewWarning">This is a PREVIEW. Please accept the HIT first.</p>

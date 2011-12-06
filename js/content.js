@@ -12,7 +12,7 @@ var chartTypeWords = {
 		attribute: "length",
 		smallAdj: "shorter",
 		bigAdj: "longer",
-		trialNum: 1, //36
+		trialNum: 1, //18
 		practiceNum: 1, //3
 		practiceOptions: [[[90, 61, 87, 13], [2, 5], ["B", 3]], [[55, 22, 67, 86], [2, 4], ["B", 1]], [[37, 80, 92, 5], [3, 5], ["B", 0]]]
 	},

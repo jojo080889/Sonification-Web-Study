@@ -17,7 +17,6 @@ $(document).ready(function() {
 	fillInQuestionText();
 
 	if (chartType == "pitch") { $("#pitch_instructions").show(); }
-	if (chartType == "duration") { $("#duration_instructions").show(); }
 
 	// set up sound stuff
 	soundManager.onready(function() {
