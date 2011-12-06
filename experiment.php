@@ -17,7 +17,7 @@
 	<script type="text/javascript" src="js/content.js"></script>
 </head>
 <body>
-
+<?php include 'progress.php' ?>
 <h1 id="question_header">Question 1 out of 24</h1>
 <h2 id="part_header">Part A</h2>
 <p id="description">

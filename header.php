@@ -1,7 +1,9 @@
 <?php
 	$stageIndex = $_REQUEST['stageIndex'];
-	if ($curPage == "training") {
+	if ($curPage == "training" || $curPage == "demographics") {
 		$stageIndex++;
 	}
-	$curStage = $_REQUEST['stage' . $stageIndex];
+	if ($stageIndex < 4) {
+		$curStage = $_REQUEST['stage' . $stageIndex];
+	}
 ?>

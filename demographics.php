@@ -1,8 +1,8 @@
-<?php include 'header.php' ?>
 <?php
 	$curPage = "demographics";
-	$nextPage = null;
+	$nextPage = "";
 ?>
+<?php include 'header.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="js/demographics.js"></script>
 </head>
 <body>
+	<?php include 'progress.php' ?>
 	<h1 id="question_header">Almost done!</h1>
 	<p id="description">
 		Thank you for working on this HIT. Please take a moment to fill out some information about yourself and your thoughts about the sounds you just heard. <b>Your answers have NOT been submitted yet -- please press submit below to finish.</b>

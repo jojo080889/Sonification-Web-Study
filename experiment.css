@@ -113,3 +113,19 @@ body {
 #pitch_instructions {
 	display: none;
 }
+
+#progress_bar {
+	margin: 0 auto;
+	padding: 3px;
+	width: 430px;
+	background-color: #eee;
+}
+#progress_bar li {
+	display: inline;
+	margin: 10px;
+	color: #888;
+}
+#progress_bar li.current {
+	font-weight: bold;
+	color: #000;
+}

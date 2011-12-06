@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="js/content.js"></script>
 </head>
 <body>
-
+<?php include 'progress.php' ?>
 <h1 id="question_header"><?= ucfirst($curStage) ?> Stage: Instructions</h1>
 <p id="description">
 	The sound clips you will hear in this stage of the HIT consist of <b>five</b> tones of varying <b><span class="chartAttribute">duration and/or pitch</span></b>.
