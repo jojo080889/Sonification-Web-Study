@@ -35,14 +35,6 @@ var chartTypeWords = {
 };
 
 var content = {
-	'demographics': {
-		description: "Thank you for working on this HIT. Please take a moment to fill out some information about yourself and your preferences.<b>Your answers have NOT been submitted yet -- please press submit below to finish.</b>", 
-		questions: "<p class='question'>What is your age, in years? <input type='text' name='ageAnswer' id='ageAnswer' size='3' maxlength='3'/></p>" + 
-		"<p class='question'>With what gender do you identify?<br /><input type='radio' name='genderAnswer' value='m' />Male<br /><input type='radio' name='genderAnswer' value='f' />Female<br /><input type='radio' name='genderAnswer' value='na' />Prefer not to answer</p>" + 
-		"<p class='question'>Which best describes your level of vision?<br /><input type='radio' name='visionAnswer' value='normal' />Normal or corrected to normal vision<br /><input type='radio' name='visionAnswer' value='color' />Partially or totally colorblind<br /><input type='radio' name='visionAnswer' value='low' />Low vision (cannot be completely corrected by lenses)<br /><input type='radio' name='visionAnswer' value='blind' />Blind<br /></p>" + 
-		"<p class='question'>Have you ever had any musical training or musical practice?<br /><input type='radio' name='musicAnswer' value='yes' />Yes<br /><input type='radio' name='musicAnswer' value='no' />No<br /></p>" + 
-		"<p class='question'>What would you say is your musical skill level?<br /><input type='radio' name='musicSkillAnswer' value='1' />1 (Not very skilled)<br /><input type='radio' name='musicSkillAnswer' value='2' />2<br /><input type='radio' name='musicSkillAnswer' value='3' />3<br /><input type='radio' name='musicSkillAnswer' value='4' />4<br /><input type='radio' name='musicSkillAnswer' value='5' />5 (Very skilled)<br /></p>" 
-	},
 	"instructions": {
 		partA: "Play the clip below. You will hear five tones. <b>Remember which two tones are highlighted.</b>",
 		partB: "Play the <b>same clip</b> below again. Pay attention to: <ul><li>which highlighted tone is <b>" + chartTypeWords[chartType]['smallAdj'] + "</b>,</li> <li>and what <b>percentage</b> the " + chartTypeWords[chartType]['attribute'] + " of the " + chartTypeWords[chartType]['smallAdj'] + " highlighted tone is of the " + chartTypeWords[chartType]['attribute'] + " of the " + chartTypeWords[chartType]['bigAdj'] + " highlighted tone.</li></ul>" +

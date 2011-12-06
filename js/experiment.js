@@ -15,7 +15,6 @@ $(document).ready(function() {
 	
 	// fill in hidden form and assign events
 	$("#assignmentId").val(aID);
-	$("#chartType").val(chartType);
 	$("#nextTrial").bind('click', loadPartB);
 
 	// show preview warning if needed
@@ -79,21 +78,14 @@ function loadPartB() {
 }
 
 function loadNextTrial() {	
-	if (trialPos != "demographics") {
-		trialPos = experiment.getTrialPos();
-	}
+	trialPos = experiment.getTrialPos();
 
-	var validAnswers;
-	if (trialPos != "demographics") {
-		// on the normal questions, make sure participants fill out the questions
-		validAnswers = validateAnswers();
-	} else { // demographics
-		validAnswers = validateDemographics();
-	}
+	// make sure participants fill out the questions
+	var validAnswers = validateAnswers();
 	if (!validAnswers) { return false; }
 
 	// Save participant answers 
-	if ((trialPos != experiment.END_OF_TRIALS) && (trialPos != "demographics")) {
+	if (trialPos != experiment.END_OF_TRIALS) {
 		var answerArray = []; // don't need to save trialPos, since that = index of answer arrays
 		answerArray.push(experiment.getCurrentTrial());
 		answerArray.push($("#toneA").val());
@@ -109,24 +101,12 @@ function loadNextTrial() {
 		// record number of plays it took for the participant to answer
 		var playsLeft = $("#playsLeft").html();
 		experiment.savePlayCount(trialPos, experiment.getPlayLimit() - playsLeft);
-	} else if (trialPos == "demographics") {
-		// Save demographics info
-		var demographicsArray = [];
-		var checked = $("input:checked");
-		for (var i = 0; i < checked.length; i++) {
-			demographicsArray.push(checked[i].value);
-		}
-		var ageAnswer = $.trim($("#ageAnswer").val());
-		demographicsArray.push(ageAnswer);
-		experiment.saveDemographics(demographicsArray);
 	}
 
 	// Prepare to load next trial
 	var nextTrial = experiment.getNextTrial();
-	if (trialPos != "demographics") {
-		trialPos = experiment.getTrialPos();
-	}
-	if (trialPos != experiment.END_OF_TRIALS && trialPos != "demographics") {
+	trialPos = experiment.getTrialPos();
+	if (trialPos != experiment.END_OF_TRIALS) {
 		var nextTrialURL = "sounds/" + chartType + "/" + nextTrial + ".mp3";
 		
 		// reset sound player
@@ -169,59 +149,13 @@ function loadNextTrial() {
 		// reset baseTime
 		baseTime = new Date().getTime();
 	} else if (trialPos == experiment.END_OF_TRIALS) { // last trial
-		// Replace with demographics content
-		$("#question_header").html("Almost done!");
-		$("#part_header").hide();
-		$("#description").html(content['demographics'].description);
-		$("#questions").html(content['demographics'].questions);
-		$("#soundclip").hide();
-		soundManager.destroySound(mySoundID);
-		$("#playInfo").hide();
+		// submit the mturk_form so that it either goes to the 
+		// next stage or to the demographics form
 
-		// bind demographic sound clips
-		practice1 = soundManager.createSound({
-			id: "practice1",
-			url: "sounds/practice1.mp3",
-			autoLoad: true,
-			onload: function() {
-				$("#soundclip_samepitch #loading").hide();
-			}
-		});
-		practice2 = soundManager.createSound({
-			id: "practice2",
-			url: "sounds/practice2.mp3",
-			autoLoad: true,
-			onload: function() {
-				$("#soundclip_mixedpitch #loading").hide();
-			}
-		});
-		practice3 = soundManager.createSound({
-			id: "practice3",
-			url: "sounds/practice3.mp3",
-			autoLoad: true,
-			onload: function() {
-				$("#soundclip_orderpitch #loading").hide();
-			}
-		});
-		bindPlayLink("#soundclip_samepitch", practice1);
-		bindPlayLink("#soundclip_orderpitch", practice3);
-		bindPlayLink("#soundclip_mixedpitch", practice2);
-		
-		if (aID == "ASSIGNMENT_ID_NOT_AVAILABLE") {
-			$("#nextTrial").attr('disabled', 'disabled');
-			$("#nextTrial").html("You must ACCEPT the HIT before you can submit the results.");
-		} else {
-			$("#nextTrial").html("Submit");
-		}
-
-		trialPos = "demographics";
-	} else { // demographics
-		// Populate hidden form and submit it
 		$("#" + chartType + "AnswerData").val(experiment.getTrialAnswers());
 		$("#" + chartType + "FirstTimingData").val(experiment.getFirstTimingData());
 		$("#" + chartType + "SecondTimingData").val(experiment.getSecondTimingData());
 		$("#" + chartType + "PlaycountData").val(experiment.getPlayCountData());
-		$("#demographics").val(experiment.getDemographics());
 		$("#mturk_form").submit();
 	}
 };
@@ -248,16 +182,6 @@ function validateAnswers() {
 		return false;
 	} else if (percentAnswer != parseInt(percentAnswer)) {
 		alert("The percent you entered must be a whole number.");
-		return false;
-	}
-	return true;
-}
-
-function validateDemographics() {
-	var checked = $("input:checked");
-	var ageAnswer = $.trim($("#ageAnswer").val());
-	if (checked.length != 4 || ageAnswer == "") {
-		alert("Please answer all the questions!");
 		return false;
 	}
 	return true;

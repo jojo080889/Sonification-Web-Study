@@ -1,14 +1,20 @@
 <?php
 	$aID = $_REQUEST['assignmentId'];
-	$action = $nextPage . ".php?assignmentId=" . $aID . "&chartType=" . $curStage . '&stageIndex=' . $stageIndex;
-	if (stageIndex == 3 && $curPage == "experiment") {
-		$nextPage = "demographics";
-	} else if ($curPage == "demographics") {
+	$action = "";
+	if ($curPage == "demographics") {
 		$action = "https://www.mturk.com/mturk/externalSubmit";
-	} else if ($curPage == "experiment") {
-		$nextStage = $_REQUEST['stage'.($stageIndex + 1)];
+	} else {
+		$nextStage = "";
+		if ($stageIndex == 3 && $curPage == "experiment") {
+			$nextPage = "demographics";
+		} else if ($curPage == "experiment") {
+			$nextStage = $_REQUEST['stage'.($stageIndex + 1)];
+		} else {
+			$nextStage = $_REQUEST['stage'.$stageIndex];
+		}
 		$action = $nextPage . ".php?assignmentId=" . $aID . "&chartType=" . $nextStage . '&stageIndex=' . $stageIndex;
 	}
+
 	$stageArray = array($_REQUEST['stage0'], $_REQUEST['stage1'], $_REQUEST['stage2'], $_REQUEST['stage3']);
 ?>
 <form id="mturk_form" action="<?= $action ?>" method="post">

@@ -1,3 +1,8 @@
+<?php include 'header.php' ?>
+<?php
+	$curPage = "demographics";
+	$nextPage = null;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +12,8 @@
 	<script type="text/javascript" src="soundmanager/soundmanager2.js"></script>
 	<script type="text/javascript" src="js/SonificationExperiment.js"></script>
 	<script type="text/javascript" src="js/soundmanagerSetUp.js"></script>
+	<script type="text/javascript" src="js/utility.js"></script>
 	<script type="text/javascript" src="js/demographics.js"></script>
-	<script type="text/javascript" src="js/content.js"></script>
 </head>
 <body>
 	<h1 id="question_header">Almost done!</h1>
@@ -49,5 +54,6 @@
 	</div>
 	<p id="previewWarning">This is a PREVIEW. Please accept the HIT first.</p>
 	<button id="nextTrial">Submit</button>
+<?php include 'valueform.php' ?>
 </body>
 </html>
