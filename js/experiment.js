@@ -183,6 +183,12 @@ function validateAnswers() {
 	} else if (percentAnswer != parseInt(percentAnswer)) {
 		alert("The percent you entered must be a whole number.");
 		return false;
+	} else if (parseInt(percentAnswer) > 100) {
+		alert("The percent you entered must be less than 100.");
+		return false;
+	} else if (parseInt(percentAnswer) < 0) {
+		alert("The percent you entered must be 0 or greater.");
+		return false;
 	}
 	return true;
 }
