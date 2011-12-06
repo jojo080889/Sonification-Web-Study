@@ -1,3 +1,8 @@
+<?php include 'header.php' ?>
+<?php
+	$curPage = 'experiment';
+	$nextPage = 'training';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,15 +68,7 @@ You can only listen to the clip once.
 <p id="previewWarning">This is a PREVIEW. Please accept the HIT first.</p>
 <button id="nextTrial" disabled="disabled">Next &gt;</button>
 
-<!-- hidden form to submit answers at the end of the HIT -->
-<form id="mturk_form" method="POST" action="https://www.mturk.com/mturk/externalSubmit">
-	<input type="hidden" id="assignmentId" name="assignmentId" value="" />
-	<input type="hidden" id="chartType" name="chartType" value="" />
-	<input type="hidden" id="answerData" name="answerData" value="" /> <!-- "answer" is a reserved word so don't name your data it! -->
-	<input type="hidden" id="firstTimingData" name="firstTimingData" value="" />
-	<input type="hidden" id="secondTimingData" name="secondTimingData" value="" />
-	<input type="hidden" id="playcountData" name="playcountData" value="" />
-	<input type="hidden" id="demographics" name="demographics" value="" />
-</form>
+<!-- hidden form to pass values/submit answers -->
+<?php include 'valueform.php' ?>
 </body>
 </html>

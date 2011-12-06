@@ -17,8 +17,7 @@ $(document).ready(function() {
 	$("#nextTrial").bind('click', function() {
 		var validAnswers = validateCalibration();
 		if (validAnswers) {
-			var url = "training.html?assignmentId=" + aID + "&chartType=" + chartType;
-			window.location = url;
+			$("#mturk_form").submit();
 		}
 	});
 	

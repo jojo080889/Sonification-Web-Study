@@ -1,3 +1,8 @@
+<?php
+	$curPage = "training";
+	$nextPage = "practice";
+?>
+<?php include 'header.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +17,9 @@
 </head>
 <body>
 
-<h1 id="question_header">Instructions</h1>
+<h1 id="question_header"><?= ucfirst($curStage) ?> Stage: Instructions</h1>
 <p id="description">
-	The sound clips you will hear in this HIT consist of <b>five</b> tones of varying <b><span class="chartAttribute">duration and/or pitch</span></b>.
+	The sound clips you will hear in this stage of the HIT consist of <b>five</b> tones of varying <b><span class="chartAttribute">duration and/or pitch</span></b>.
 	<b>Two</b> of these tones will be "highlighted". The highlighted tones will have a large amount of "fuzzy" noise playing in the background.<br /><br />
 	Below are examples of the normal tones and highlighted tones you will hear. Once you have listened to the examples, you will be able to click Next.
 </p>
@@ -57,5 +62,8 @@
 </div>
 <p id="previewWarning">This is a PREVIEW. Please accept the HIT first.</p>
 <button id="nextTrial" disabled="disabled">Next &gt;</button>
+
+<!-- hidden form to pass values over pages -->
+<?php include 'valueform.php' ?>
 </body>
 </html>

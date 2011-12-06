@@ -4,32 +4,32 @@ var chartTypeWords = {
 		attribute: "pitch",
 		smallAdj: "lower",
 		bigAdj: "higher",
-		trialNum: 24,
-		practiceNum: 3,
+		trialNum: 1, //24
+		practiceNum: 1, //3
 		practiceOptions: [[[80, 93, 78, 22], [1, 4], ["B", 3]], [[3, 83, 21, 15], [2, 4], ["B", 1]], [[37, 98, 83, 72], [2, 3], ["B", 0]]]
 	},
 	'duration': {
 		attribute: "length",
 		smallAdj: "shorter",
 		bigAdj: "longer",
-		trialNum: 36,
-		practiceNum: 3,
+		trialNum: 1, //36
+		practiceNum: 1, //3
 		practiceOptions: [[[90, 61, 87, 13], [2, 5], ["B", 3]], [[55, 22, 67, 86], [2, 4], ["B", 1]], [[37, 80, 92, 5], [3, 5], ["B", 0]]]
 	},
 	'tempo': {
 		attribute: "speed",
 		smallAdj: "slower",
 		bigAdj: "faster",
-		trialNum: 18,
-		practiceNum: 3,
+		trialNum: 1, //18
+		practiceNum: 1, //3
 		practiceOptions: [[[10, 68, 99, 96], [2, 3], ["A", 1]], [[83, 73, 37, 4], [1, 4], ["A", 2]], [[52, 1, 80, 98], [2, 4], ["A", 0]]]
 	},
 	'volume': {
 		attribute: "loudness",
 		smallAdj: "quieter",
 		bigAdj: "louder",
-		trialNum: 12,
-		practiceNum: 3,
+		trialNum: 1, //12
+		practiceNum: 1, //3
 		practiceOptions: [[[3, 98, 10, 52], [2, 3], ["A", 3]], [[10, 5, 68, 8],[3, 5], ["B", 2]], [[90, 37, 84, 79], [4, 5], ["A", 1]]]
 	}
 };

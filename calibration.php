@@ -1,3 +1,14 @@
+<?php
+// Shuffle the order of the stages.
+$stageOrder = array('pitch', 'duration', 'tempo', 'volume');
+shuffle($stageOrder);
+
+$aID = $_REQUEST['assignmentId'];
+
+$curPage = "calibration";
+$nextPage = "training";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,5 +37,13 @@
 </div>
 <p id="previewWarning">This is a PREVIEW. Please accept the HIT first.</p>
 <button id="nextTrial" disabled="disabled">Next &gt;</button>
+
+<!-- hidden form to move to next page -->
+<form id="mturk_form" action="training.php?assignmentId=<?= $aID ?>&chartType=<?= $stageOrder[0] ?>&stageIndex=-1" method="post">
+	<input type="hidden" name="stage0" value="<?= $stageOrder[0] ?>" />
+	<input type="hidden" name="stage1" value="<?= $stageOrder[1] ?>" />
+	<input type="hidden" name="stage2" value="<?= $stageOrder[2] ?>" />
+	<input type="hidden" name="stage3" value="<?= $stageOrder[3] ?>" />
+</form>
 </body>
 </html>

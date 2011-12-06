@@ -11,8 +11,7 @@ $(document).ready(function() {
 	}
 	
 	$("#nextTrial").bind('click', function() {
-		var url = "practice.html?assignmentId=" + aID + "&chartType=" + chartType;
-		window.location = url;
+		$("#mturk_form").submit();
 	});
 
 	fillInQuestionText();

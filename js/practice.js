@@ -135,7 +135,7 @@ function loadNextPractice() {
 		loadPracticePercentageChoices(nextTrial);
 	} else { 
 		// move to real questions
-		window.location = 'experiment.html?assignmentId=' + aID + '&chartType=' + chartType;
+		$("#mturk_form").submit();
 	}
 };
 

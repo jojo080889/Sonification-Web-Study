@@ -1,3 +1,8 @@
+<?php include 'header.php' ?>
+<?php
+	$curPage = "practice";
+	$nextPage = "experiment";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,5 +76,8 @@ You can only listen to the clip once.<br />
 	Some of your responses were incorrect. Please try again.<br />
 	Since this is a practice question, you can listen to the clip again.
 </span>
+
+<!-- hidden form to move to next page -->
+<?php include 'valueform.php' ?>
 </body>
 </html>

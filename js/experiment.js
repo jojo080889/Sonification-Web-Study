@@ -217,10 +217,10 @@ function loadNextTrial() {
 		trialPos = "demographics";
 	} else { // demographics
 		// Populate hidden form and submit it
-		$("#answerData").val(experiment.getTrialAnswers());
-		$("#firstTimingData").val(experiment.getFirstTimingData());
-		$("#secondTimingData").val(experiment.getSecondTimingData());
-		$("#playcountData").val(experiment.getPlayCountData());
+		$("#" + chartType + "AnswerData").val(experiment.getTrialAnswers());
+		$("#" + chartType + "FirstTimingData").val(experiment.getFirstTimingData());
+		$("#" + chartType + "SecondTimingData").val(experiment.getSecondTimingData());
+		$("#" + chartType + "PlaycountData").val(experiment.getPlayCountData());
 		$("#demographics").val(experiment.getDemographics());
 		$("#mturk_form").submit();
 	}
