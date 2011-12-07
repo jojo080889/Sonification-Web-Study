@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	var aID = $.urlParam('assignmentId');
-	var workerID = $.urlParam('workerId');
 	var chartType = $.urlParam('chartType');
 
 	if (aID == "ASSIGNMENT_ID_NOT_AVAILABLE") {

@@ -8,6 +8,7 @@ $aID = $_REQUEST['assignmentId'];
 $curPage = "calibration";
 $nextPage = "training";
 $stageIndex = -1;
+$turkSubmitTo = $_REQUEST['turkSubmitTo'];
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@ $stageIndex = -1;
 <button id="nextTrial" disabled="disabled">Next &gt;</button>
 
 <!-- hidden form to move to next page -->
-<form id="mturk_form" action="training.php?assignmentId=<?= $aID ?>&chartType=<?= $stageOrder[0] ?>&stageIndex=<?= $stageIndex ?>" method="post">
+<form id="mturk_form" action="training.php?assignmentId=<?= $aID ?>&chartType=<?= $stageOrder[0] ?>&stageIndex=<?= $stageIndex ?>&turkSubmitTo=<?= $turkSubmitTo ?>" method="post">
 	<input type="hidden" name="stage0" value="<?= $stageOrder[0] ?>" />
 	<input type="hidden" name="stage1" value="<?= $stageOrder[1] ?>" />
 	<input type="hidden" name="stage2" value="<?= $stageOrder[2] ?>" />

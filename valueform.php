@@ -1,8 +1,9 @@
 <?php
 	$aID = $_REQUEST['assignmentId'];
+	$turkSubmitTo = $_REQUEST['turkSubmitTo'];
 	$action = "";
 	if ($curPage == "demographics") {
-		$action = "https://www.mturk.com/mturk/externalSubmit";
+		$action = $turkSubmitTo . "/mturk/externalSubmit";
 	} else {
 		$nextStage = "";
 		if ($stageIndex == 3 && $curPage == "experiment") {
@@ -12,7 +13,7 @@
 		} else {
 			$nextStage = $_REQUEST['stage'.$stageIndex];
 		}
-		$action = $nextPage . ".php?assignmentId=" . $aID . "&chartType=" . $nextStage . '&stageIndex=' . $stageIndex;
+		$action = $nextPage . ".php?assignmentId=" . $aID . "&chartType=" . $nextStage . '&stageIndex=' . $stageIndex . '&turkSubmitTo=' . $turkSubmitTo;
 	}
 
 	$stageArray = array($_REQUEST['stage0'], $_REQUEST['stage1'], $_REQUEST['stage2'], $_REQUEST['stage3']);
