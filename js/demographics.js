@@ -19,6 +19,10 @@ $(document).ready(function() {
 		}
 		var ageAnswer = $.trim($("#ageAnswer").val());
 		demographicsArray.push(ageAnswer);
+		var prefQ = $.trim($("#preferenceQ").val());
+		demographicsArray.push(prefQ);
+		var diffQ = $.trim($("#difficultyQ").val());
+		demographicsArray.push(diffQ);
 		
 		$("#demographics").val(demographicsArray);
 		$("#mturk_form").submit();
@@ -28,7 +32,9 @@ $(document).ready(function() {
 function validateDemographics() {
 	var checked = $("input:checked");
 	var ageAnswer = $.trim($("#ageAnswer").val());
-	if (checked.length != 4 || ageAnswer == "") {
+	var prefQ = $.trim($("#preferenceQ").val());
+	var diffQ = $.trim($("#difficultyQ").val());
+	if (checked.length != 4 || ageAnswer == "" || prefQ == "" || diffQ == "") {
 		alert("Please answer all the questions!");
 		return false;
 	}

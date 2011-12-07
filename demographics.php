@@ -52,6 +52,14 @@
 			<input type="radio" name="musicSkillAnswer" value="4" /> 4<br />
 			<input type="radio" name="musicSkillAnswer" value="5" /> 5 (Very skilled)<br />
 		</p>
+		<p class="question">
+			Which sounds did you like and dislike the most, and why?<br />
+			<textarea id="preferenceQ" rows="3" cols="70"></textarea>
+		</p>
+		<p class="question">
+			Which sounds were the easiest and hardest to type percentages for, and why?<br />
+			<textarea id="difficultyQ" rows="3" cols="70"></textarea>
+		</p>
 	</div>
 	<p id="previewWarning">This is a PREVIEW. Please accept the HIT first.</p>
 	<button id="nextTrial">Submit</button>
