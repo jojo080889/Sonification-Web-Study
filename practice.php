@@ -61,7 +61,7 @@ You can only listen to the clip once.<br />
 	</p>
 	<p id="percentage" class='question'>
 		What percent is the <span class="smallAdj">shorter</span> of the <span class="bigAdj">longer</span>?<br />
-		<span id="examples">For example, if the <span class="smallAdj">shorter</span> tone is <sup>1</sup>&frasl;<sub>4</sub> the <span class="chartAttribute">long</span> of the <span class="bigAdj">longer</span> tone, pick '25%'.</span>
+		<span id="examples">For example, if the <span class="smallAdj">shorter</span> tone is only <sup>1</sup>&frasl;<sub>4</sub> the <span class="chartAttribute">long</span> of the <span class="bigAdj">longer</span> tone, pick '25%'.</span>
 		<span id="practiceOptions">
 		<input type="radio" name="practiceAnswer" id="practiceAnswer1" value="55"><label id="practiceAnswerLabel1" for="practiceAnswer1">55%</label><br />
 		<input type="radio" name="practiceAnswer" id="practiceAnswer2" value="22"><label id="practiceAnswerLabel2" for="practiceAnswer2">22%</label><br />

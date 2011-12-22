@@ -61,7 +61,7 @@ You can only listen to the clip once.
 	</p>
 	<p id='percentage' class='question'>What percent is the <span class="smallAdj">shorter</span> of the <span class="bigAdj">longer</span>?
 		<input type="text" id="percentAnswer" size="3" maxLength="3" />%
-		<span id="examples">For example, if the <span class="smallAdj">shorter</span> tone is <sup>1</sup>&frasl;<sub>4</sub> the <span class="chartAttribute">length</span> of the <span class="bigAdj">longer</span> tone, enter '25'.</span>
+		<span id="examples">For example, if the <span class="smallAdj">shorter</span> tone is only <sup>1</sup>&frasl;<sub>4</sub> the <span class="chartAttribute">length</span> of the <span class="bigAdj">longer</span> tone, enter '25'.</span>
 		<i id='unsureInstructions'>Type '0' if you're unsure</i>
 	</p>
 </div>
