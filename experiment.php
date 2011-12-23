@@ -21,7 +21,7 @@
 <?php include 'progress.php' ?>
 <h1 id="question_header">Question 1 out of 24</h1>
 <p id="description">
-	Answer the following questions about the <b>two marked bars</b> in the graph below.
+	Answer the questions about the <b>two marked bars</b> in the graph below. Go with your <b>gut instinct</b> and try not to make a precise measurement.
 </p>
 <p id="countdown_desc">
 	<b id="countdown">20</b> seconds until the questions appear...
