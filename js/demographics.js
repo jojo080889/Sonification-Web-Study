@@ -2,6 +2,8 @@
 var aID = $.urlParam("assignmentId");
 
 $(document).ready(function() {
+	$("#questions").show();
+	
 	if (aID == "ASSIGNMENT_ID_NOT_AVAILABLE") {
 		$("#nextTrial").attr('disabled', 'disabled');
 		$("#nextTrial").html("You must ACCEPT the HIT before you can submit the results.");
@@ -34,7 +36,7 @@ function validateDemographics() {
 	var ageAnswer = $.trim($("#ageAnswer").val());
 	var prefQ = $.trim($("#preferenceQ").val());
 	var diffQ = $.trim($("#difficultyQ").val());
-	if (checked.length != 4 || ageAnswer == "" || prefQ == "" || diffQ == "") {
+	if (checked.length != 3 || ageAnswer == "" || prefQ == "" || diffQ == "") {
 		alert("Please answer all the questions!");
 		return false;
 	}

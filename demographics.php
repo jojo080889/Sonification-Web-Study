@@ -33,13 +33,6 @@
 			<input type="radio" name="genderAnswer" value="na" /> Prefer not to answer
 		</p>
 		<p class="question">
-			What best describes your level of vision?<br />
-			<input type="radio" name="visionAnswer" value="normal" /> Normal or corrected to normal vision<br />
-			<input type="radio" name="visionAnswer" value="color" /> Partially or totally colorblind<br />
-			<input type="radio" name="visionAnswer" value="low" /> Low vision (cannot be completely corrected by lenses)<br />
-			<input type="radio" name="visionAnswer" value="blind" /> Blind<br />
-		</p>
-		<p class="question">
 			Have you ever had any musical training or musical practice?<br />
 			<input type="radio" name="musicAnswer" value="yes" /> Yes<br />
 			<input type="radio" name="musicAnswer" value="no" /> No<br />
@@ -53,11 +46,11 @@
 			<input type="radio" name="musicSkillAnswer" value="5" /> 5 (Very skilled)<br />
 		</p>
 		<p class="question">
-			Which sounds did you like and dislike the most, and why?<br />
+			Which graphs did you like and dislike the most? (ones with sound, ones without sound, static graphs, animated graphs, etc.)<br />
 			<textarea id="preferenceQ" rows="3" cols="70"></textarea>
 		</p>
 		<p class="question">
-			Which sounds were the easiest and hardest to type percentages for, and why?<br />
+			Did you feel like adding sound to the graphs helped you make the percentage estimates?<br />
 			<textarea id="difficultyQ" rows="3" cols="70"></textarea>
 		</p>
 	</div>

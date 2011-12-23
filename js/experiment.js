@@ -65,6 +65,9 @@ function questionCountdown() {
 		$("#countdown_desc").hide();
 		$("#questions").show();
 		$("#nextTrial").removeAttr("disabled");
+		
+		// reset baseTime
+		baseTime = new Date().getTime();
 	} else {
 		$("#countdown_desc #countdown").html(curSec - 1);
 	}
@@ -119,9 +122,7 @@ function loadNextTrial() {
 		answerArray.push($("#percentAnswer").val());
 		experiment.saveTrialAnswer(trialPos, answerArray);
 	
-		// timing for first half is recorded onFinish of second play
-		// record timing for second half
-		updateSecondAnswerTime();
+		updateAnswerTime();
 	}
 
 	// Prepare to load next trial
@@ -149,7 +150,9 @@ function loadNextTrial() {
 			var nextTrialURL = "sounds/viz-son/" + nextTrial + ".mp3";
 		
 			// reset sound player
-			soundManager.destroySound(mySoundID);
+			if (mySoundID != undefined) {
+				soundManager.destroySound(mySoundID);
+			}
 			mySoundID = nextTrial;
 			mySound = soundManager.createSound({
 				id: mySoundID,
@@ -167,38 +170,27 @@ function loadNextTrial() {
 			questionInterval = setInterval("questionCountdown()", 1000);
 		}
 		
-		// reset baseTime
-		baseTime = new Date().getTime();
 	} else if (trialPos == experiment.END_OF_TRIALS) { // last trial
 		// submit the mturk_form so that it either goes to the 
 		// next stage or to the demographics form
 
-		$("#" + chartType + "AnswerData").val(experiment.getTrialAnswers());
-		$("#" + chartType + "FirstTimingData").val(experiment.getFirstTimingData());
-		$("#" + chartType + "SecondTimingData").val(experiment.getSecondTimingData());
-		$("#" + chartType + "PlaycountData").val(experiment.getPlayCountData());
+		$("#answerData").val(experiment.getTrialAnswers());
+		$("#timingData").val(experiment.getFirstTimingData());
 		$("#mturk_form").submit();
 	}
 };
 
-// Since the dropdowns get disabled after the second play finishes,
-// this function should only be called before that point.
-function updateFirstAnswerTime() {
+function updateAnswerTime() {
 	// record how long it took for the participant to answer
 	nowTime = new Date().getTime();
 	experiment.saveFirstTiming(experiment.getTrialPos(), nowTime - baseTime);
 }
 
-function updateSecondAnswerTime() {
-	nowTime = new Date().getTime();
-	experiment.saveSecondTiming(experiment.getTrialPos(), nowTime - baseTime);
-}
-
 function validateAnswers() {
 	// make sure user enters a number for the percentage answer
 	var percentAnswer = $("#percentAnswer").val();
-	var shortTone = $("#shorterTone").val();
-	if ($.trim(percentAnswer) == "" || shortTone == "noAnswer") {
+	var smallBar = $("#smallerBar").val();
+	if ($.trim(percentAnswer) == "" || smallBar == "noAnswer") {
 		alert("Please answer all the questions!");
 		return false;
 	} else if (percentAnswer != parseInt(percentAnswer)) {
