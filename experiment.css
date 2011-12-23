@@ -11,14 +11,17 @@ body {
 #flashWarning {
 	font-size: 12px;
 }
-
-#toneA {
-	margin-right: 30px;
+#questions {
+	display: none;
 }
-#toneAlabel {
-	margin-left: 20px;
+#questions.calibration_q {
+	display: block;
 }
-
+#countdown_desc {
+	text-align: center;
+	font-style: italic;
+	color: #666;
+}
 .question {
 	background-color: #eee;
 	padding: 5px;

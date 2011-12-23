@@ -7,6 +7,9 @@ var baseTime, firstAnswerTime;
 var trialPos;
 var nextTrial;
 
+// set countdown for showing a question
+var questionInterval;
+
 $(document).ready(function() {
 	trialCount = 36;
 
@@ -42,14 +45,30 @@ $(document).ready(function() {
 					$("#loading").hide();
 					drawGraph(nextTrial);
 					this.play();
+					questionInterval = setInterval("questionCountdown()", 1000);
 				}
 			});
 		});
 	} else {
 		// just draw the graph
 		drawGraph(nextTrial);
+		questionInterval = setInterval("questionCountdown()", 1000);
 	}
 });
+
+function questionCountdown() {
+	var curSec = $("#countdown_desc #countdown").html();
+	if (curSec <= 1) {
+		// cancel the interval
+		clearInterval(questionInterval);
+
+		$("#countdown_desc").hide();
+		$("#questions").show();
+		$("#nextTrial").removeAttr("disabled");
+	} else {
+		$("#countdown_desc #countdown").html(curSec - 1);
+	}
+}
 
 function drawGraph(nextTrial) {
 	// draw graph
@@ -85,29 +104,6 @@ function drawGraph(nextTrial) {
 	}
 }
 
-function loadPartB() {
-	trialPos = experiment.getTrialPos();
-	var toneA = $("#toneA").val();
-	var toneB = $("#toneB").val();
-
-	if (toneA == "noAnswer" || toneB == "noAnswer") {
-		alert("Please answer all the questions!");
-		return false;
-	}
-
-	// update content for second part
-	$("#part_header").html("Part B");
-	$("#description").html(content["instructions"].partB);
-	$("#whichHighlight").hide();
-	$("#nextTrial").unbind();
-	$("#nextTrial").bind('click', loadNextTrial);
-	$("#nextTrial").attr("disabled", "disabled");
-	enableExperimentSound("#soundclip");
-
-	//save timing for first question
-	updateFirstAnswerTime();
-}
-
 function loadNextTrial() {	
 	trialPos = experiment.getTrialPos();
 
@@ -132,32 +128,44 @@ function loadNextTrial() {
 	var nextTrial = experiment.getNextTrial();
 	trialPos = experiment.getTrialPos();
 	if (trialPos != experiment.END_OF_TRIALS) {
-		var nextTrialURL = "sounds/" + chartType + "/" + nextTrial + ".mp3";
-		
-		// reset sound player
-		soundManager.destroySound(mySoundID);
-		mySoundID = nextTrial;
-		mySound = soundManager.createSound({
-			id: mySoundID,
-			url: nextTrialURL,
-			autoLoad: true,
-			onload: function() {
-				$("#loading").hide();
-			}
-		});
-		mySound.questionState = 0;
-		$("#soundclip").unbind();
-		enableExperimentSound("#soundclip");
-		$("#soundclip").removeClass('clipPlaying');
-		$("#playsLeft").html(experiment.getPlayLimit());
+		// reset graph
+		$(".bar").css("height", 0).css("opacity", 0);
 		
 		// reset content
+		$("#graph .mark").html("");
 		$("#smallerBar").val("noAnswer");
 		$("#percentage input").val("");
 		$("#nextTrial").attr("disabled", "disabled");
+		$("#countdown_desc #countdown").html("20");
+		$("#questions").hide();
+		$("#countdown_desc").show();
 
 		// replace content
 		$("#question_header").html("Question " + (trialPos + 1) + " out of " + trialCount);
+	
+		var hasSound = (nextTrial >= 1 && nextTrial < 13) || (nextTrial >= 19 && nextTrial < 31);
+		
+		if (hasSound) {
+			var nextTrialURL = "sounds/viz-son/" + nextTrial + ".mp3";
+		
+			// reset sound player
+			soundManager.destroySound(mySoundID);
+			mySoundID = nextTrial;
+			mySound = soundManager.createSound({
+				id: mySoundID,
+				url: nextTrialURL,
+				autoLoad: true,
+				onload: function() {
+					$("#loading").hide();
+					drawGraph(nextTrial);
+					this.play();
+					questionInterval = setInterval("questionCountdown()", 1000);
+				}
+			});
+		} else {
+			drawGraph(nextTrial);
+			questionInterval = setInterval("questionCountdown()", 1000);
+		}
 		
 		// reset baseTime
 		baseTime = new Date().getTime();

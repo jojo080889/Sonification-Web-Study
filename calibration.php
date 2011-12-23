@@ -34,7 +34,7 @@ $turkSubmitTo = $_REQUEST['turkSubmitTo'];
 <p id="soundclip" class="soundclip">
 	<span id="loading">Loading...</span>
 </p>
-<div id="questions">
+<div id="questions" class="calibration_q">
 	<p class='question'>How many tones did you hear? <input type='text' size='1' maxlength='1' id='calibrationAnswer' /></p>
 </div>
 <p id="previewWarning">This is a PREVIEW. Please accept the HIT first.</p>

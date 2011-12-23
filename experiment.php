@@ -23,6 +23,9 @@
 <p id="description">
 	Answer the following questions about the <b>two marked bars</b> in the graph below.
 </p>
+<p id="countdown_desc">
+	<b id="countdown">20</b> seconds until the questions appear...
+</p>
 <div id="graph">
 	<span id="loadinggraph">Loading...</span>
 	<div class="bar" style="left: 20px">
