@@ -60,19 +60,27 @@ function drawGraph(nextTrial) {
 	var isDuration = (nextTrial >= 1 && nextTrial < 7) || (nextTrial >= 19 && nextTrial < 25);
 	var isVolume = (nextTrial >= 7 && nextTrial < 13) || (nextTrial >= 25 && nextTrial < 31);
 	var bars = $(".bar");
+	var marks = $(".bar .mark");
 	var durationDelay = 70;
 
+
 	for (var i = 0; i < dataArr.length; i++) {
+		// mark the highlighted bars
+		if (highlightArr[i]) {
+			$(marks[i]).html("&#8226;");
+		}
+
+		// draw the actual bars
 		if (isAnimated && isVolume) {
-			$(bars[i]).delay(2000 * i).animate( { height: ((dataArr[i] * 1.8) + "px") }, 1000);
+			$(bars[i]).delay(2000 * i).animate({opacity: 1}, 1).animate( { height: ((dataArr[i] * 1.8) + "px") }, 1000);
 		} else if (isAnimated && isDuration) {
 			var dur = (dataArr[i] / 40) * 1000; 
-			$(bars[i]).delay(durationDelay).animate({ height: ((dataArr[i] * 1.8) + "px") }, dur);
+			$(bars[i]).delay(durationDelay).animate({opacity: 1}, 1).animate({ height: ((dataArr[i] * 1.8) + "px") }, dur);
 			durationDelay += (dur + 2500);
 		} else if (isAnimated) {
-			$(bars[i]).delay(1000 * i).animate({ height: ((dataArr[i] * 1.8) + "px") });
+			$(bars[i]).delay(2000 * i).animate({opacity: 1}, 1).animate({ height: ((dataArr[i] * 1.8) + "px") }, 1000);
 		} else {
-			$(bars[i]).css("height", (dataArr[i] * 1.8) + "px");
+			$(bars[i]).css("opacity", 1).css("height", (dataArr[i] * 1.8) + "px");
 		}
 	}
 }

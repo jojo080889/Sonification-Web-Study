@@ -21,18 +21,34 @@
 <?php include 'progress.php' ?>
 <h1 id="question_header">Question 1 out of 24</h1>
 <p id="description">
-	Answer the following questions about the graph below.
+	Answer the following questions about the <b>two marked bars</b> in the graph below.
 </p>
 <div id="graph">
 	<span id="loadinggraph">Loading...</span>
-	<div class="bar" style="left: 20px"></div>
-	<div class="bar" style="left: 70px"></div>
-	<div class="bar" style="left: 120px"></div>
-	<div class="bar" style="left: 170px"></div>
-	<div class="bar" style="left: 220px"></div>
+	<div class="bar" style="left: 20px">
+		<span class="mark"></span>	
+	</div>
+	<div class="bar" style="left: 70px">
+		<span class="mark"></span>
+	</div>
+	<div class="bar" style="left: 120px">
+		<span class="mark"></span>
+	</div>
+	<div class="bar" style="left: 170px">
+		<span class="mark"></span>	
+	</div>
+	<div class="bar" style="left: 220px">
+		<span class="mark"></span>	
+	</div>
+
+	<div class="label" style="left: 20px">1</div>
+	<div class="label" style="left: 70px">2</div>
+	<div class="label" style="left: 120px">3</div>
+	<div class="label" style="left: 170px">4</div>
+	<div class="label" style="left: 220px">5</div>
 </div>
 <div id="questions">
-	<p id='whichSmaller' class='question'>Which highlighted bar is smaller? 
+	<p id='whichSmaller' class='question'>Which marked bar is smaller? 
 		<select id='smallerBar'>
 			<option value="noAnswer"></option>
 			<option value="1">Bar 1</option>

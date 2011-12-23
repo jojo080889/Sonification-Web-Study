@@ -5,6 +5,7 @@
 	width: 270px;
 	height: 200px;
 	margin: 0 auto;
+	margin-bottom: 30px;
 	position: relative;
 }
 
@@ -14,5 +15,23 @@
 	background-color: #D62727;
 	position: absolute;
 	bottom: 0px;
+	opacity: 0;
+}
 
+#graph .label {
+	position: absolute;
+	bottom: -20px;
+	font-size: 12px;
+	text-align: center;
+	width: 30px;
+}
+
+.bar .mark {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	height: 10px;
+	position: absolute;
+	top: 50%;
+	margin-top: -10px;
 }
