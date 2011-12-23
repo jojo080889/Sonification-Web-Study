@@ -1,4 +1,6 @@
 <?php
+	$SHOW_PROGRESS = false;
+	
 	$stageIndex = $_REQUEST['stageIndex'];
 	if ($curPage == "training" || $curPage == "demographics") {
 		$stageIndex++;

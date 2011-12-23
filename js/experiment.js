@@ -8,51 +8,74 @@ var trialPos;
 var nextTrial;
 
 $(document).ready(function() {
-	trialCount = chartTypeWords[chartType]['trialNum'];
+	trialCount = 36;
 
 	// create experiment object
 	experiment = new SonificationExperiment(chartType, trialCount);
 	
 	// fill in hidden form and assign events
 	$("#assignmentId").val(aID);
-	$("#nextTrial").bind('click', loadPartB);
+	$("#nextTrial").bind('click', loadNextTrial);
 
 	// show preview warning if needed
 	if (aID == "ASSIGNMENT_ID_NOT_AVAILABLE") {
 		$("#previewWarning").css('display', 'block');
 	}
 	
-	// populate play count information
-	$("#maxPlayCount").html(experiment.getPlayLimit());
-	$("#playsLeft").html(experiment.getPlayLimit());
-
 	var nextTrial = experiment.getNextTrial();
 
 	// load question header and instructions
 	trialPos = experiment.getTrialPos();
 	$("#question_header").html("Question " + (trialPos + 1) + " out of " + trialCount);
-	$("#part_header").html("Part A");
-	$("#description").html(content["instructions"].partA);
 
-	// load question text
-	fillInQuestionText();
-
-	// set up soundmanager
-	mySoundID = nextTrial;
-	soundManager.onready(function() {
-		mySound = soundManager.createSound({
-			id: mySoundID,
-			url: 'sounds/' + chartType + '/' + nextTrial + '.mp3',
-			autoLoad: true,
-			onload: function() {
-				$("#loading").hide();
-			}
+	var hasSound = (nextTrial >= 1 && nextTrial < 13) || (nextTrial >= 19 && nextTrial < 31);
+	
+	if (hasSound) {
+		// set up soundmanager
+		mySoundID = nextTrial;
+		soundManager.onready(function() {
+			mySound = soundManager.createSound({
+				id: mySoundID,
+				url: 'sounds/viz-son/' + nextTrial + '.mp3',
+				autoLoad: true,
+				onload: function() {
+					$("#loading").hide();
+					drawGraph(nextTrial);
+					this.play();
+				}
+			});
 		});
-		mySound.questionState = 0;
-
-		bindExperimentPlayLink();
-	});
+	} else {
+		// just draw the graph
+		drawGraph(nextTrial);
+	}
 });
+
+function drawGraph(nextTrial) {
+	// draw graph
+	$("#loadinggraph").hide();
+	var dataArr = dataArrays[nextTrial - 1];
+	var highlightArr = highlightArrays[nextTrial - 1];
+	var isAnimated = (nextTrial >= 19 && nextTrial < 37);
+	var isDuration = (nextTrial >= 1 && nextTrial < 7) || (nextTrial >= 19 && nextTrial < 25);
+	var isVolume = (nextTrial >= 7 && nextTrial < 13) || (nextTrial >= 25 && nextTrial < 31);
+	var bars = $(".bar");
+	var durationDelay = 70;
+
+	for (var i = 0; i < dataArr.length; i++) {
+		if (isAnimated && isVolume) {
+			$(bars[i]).delay(2000 * i).animate( { height: ((dataArr[i] * 1.8) + "px") }, 1000);
+		} else if (isAnimated && isDuration) {
+			var dur = (dataArr[i] / 40) * 1000; 
+			$(bars[i]).delay(durationDelay).animate({ height: ((dataArr[i] * 1.8) + "px") }, dur);
+			durationDelay += (dur + 2500);
+		} else if (isAnimated) {
+			$(bars[i]).delay(1000 * i).animate({ height: ((dataArr[i] * 1.8) + "px") });
+		} else {
+			$(bars[i]).css("height", (dataArr[i] * 1.8) + "px");
+		}
+	}
+}
 
 function loadPartB() {
 	trialPos = experiment.getTrialPos();
@@ -88,19 +111,13 @@ function loadNextTrial() {
 	if (trialPos != experiment.END_OF_TRIALS) {
 		var answerArray = []; // don't need to save trialPos, since that = index of answer arrays
 		answerArray.push(experiment.getCurrentTrial());
-		answerArray.push($("#toneA").val());
-		answerArray.push($("#toneB").val());
-		answerArray.push($("#shorterTone").val());
+		answerArray.push($("#smallerBar").val());
 		answerArray.push($("#percentAnswer").val());
 		experiment.saveTrialAnswer(trialPos, answerArray);
 	
 		// timing for first half is recorded onFinish of second play
 		// record timing for second half
 		updateSecondAnswerTime();
-
-		// record number of plays it took for the participant to answer
-		var playsLeft = $("#playsLeft").html();
-		experiment.savePlayCount(trialPos, experiment.getPlayLimit() - playsLeft);
 	}
 
 	// Prepare to load next trial
@@ -127,25 +144,13 @@ function loadNextTrial() {
 		$("#playsLeft").html(experiment.getPlayLimit());
 		
 		// reset content
-		$("#whichHighlight").hide();
-		$("#whichShorter").hide();
-		$("#percentage").hide();
-	
-		$("#toneA").val("noAnswer");
-		$("#toneB").val("noAnswer");
-		$("#shorterTone").val("noAnswer");
+		$("#smallerBar").val("noAnswer");
 		$("#percentage input").val("");
-		$("#description").html(content["instructions"].partA);
-
-		// rebind next button
-		$("#nextTrial").unbind();
-		$("#nextTrial").bind('click', loadPartB);
 		$("#nextTrial").attr("disabled", "disabled");
 
 		// replace content
 		$("#question_header").html("Question " + (trialPos + 1) + " out of " + trialCount);
-		$("#part_header").html("Part B");
-
+		
 		// reset baseTime
 		baseTime = new Date().getTime();
 	} else if (trialPos == experiment.END_OF_TRIALS) { // last trial

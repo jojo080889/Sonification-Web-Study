@@ -13,6 +13,8 @@ if ($curPage == "calibration") {
 
 $highlightText = " class='current' ";
 ?>
+
+<?php if ($SHOW_PROGRESS) { ?>
 <ul id="progress_bar">
 	<li <?php if($curPage == "calibration") { echo $highlightText; } ?>>Intro</li>
 	<li <?php if($stageIndex == 0) { echo $highlightText; } ?>><?= $stage0 ?></li>
@@ -21,3 +23,4 @@ $highlightText = " class='current' ";
 	<li <?php if($stageIndex == 3) { echo $highlightText; } ?>><?= $stage3 ?></li>
 	<li <?php if($curPage == "demographics") { echo $highlightText; } ?>>Done</li>
 </ul>
+<?php } ?>

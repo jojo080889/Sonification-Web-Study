@@ -1,6 +1,6 @@
 // set up SoundManager
 soundManager.url = 'soundmanager/swf';
-soundManager.debugMode = false;
+soundManager.debugMode = true;
 soundManager.useConsole = false;
 soundManager.waitForWindowLoad = false;
 soundManager.useHTML5Audio = false;

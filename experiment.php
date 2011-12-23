@@ -8,61 +8,43 @@
 <head>
 	<title>Sonification Experiment</title>
 	<link rel="stylesheet" type="text/css" href="experiment.css" />
+	<link rel="stylesheet" type="text/css" href="graph.css" />
 	<script type="text/javascript" src="jquery/jquery-1.7.min.js"></script>
 	<script type="text/javascript" src="soundmanager/soundmanager2.js"></script>
 	<script type="text/javascript" src="js/SonificationExperiment.js"></script>
 	<script type="text/javascript" src="js/soundmanagerSetUp.js"></script>
 	<script type="text/javascript" src="js/utility.js"></script>
+	<script type="text/javascript" src="js/data.js"></script>
 	<script type="text/javascript" src="js/experiment.js"></script>
-	<script type="text/javascript" src="js/content.js"></script>
 </head>
 <body>
 <?php include 'progress.php' ?>
 <h1 id="question_header">Question 1 out of 24</h1>
-<h2 id="part_header">Part A</h2>
 <p id="description">
+	Answer the following questions about the graph below.
 </p>
-<p id="playInfo">
-You can only listen to the clip once.
-</p>
-<p id="soundclip" class="soundclip">
-	<span id="loading">Loading...</span>
-</p>
+<div id="graph">
+	<span id="loadinggraph">Loading...</span>
+	<div class="bar" style="left: 20px"></div>
+	<div class="bar" style="left: 70px"></div>
+	<div class="bar" style="left: 120px"></div>
+	<div class="bar" style="left: 170px"></div>
+	<div class="bar" style="left: 220px"></div>
+</div>
 <div id="questions">
-	<p id='whichHighlight' class='question'>Which tones were highlighted? 
-		<label for='toneA' id="toneAlabel"></label>
-		<select id='toneA'>
+	<p id='whichSmaller' class='question'>Which highlighted bar is smaller? 
+		<select id='smallerBar'>
 			<option value="noAnswer"></option>
-			<option value="1">1st</option>
-			<option value="2">2nd</option>
-			<option value="3">3rd</option>
-			<option value="4">4th</option>
-			<option value="5">5th</option>
-			<option value="unsure">Not sure</option>
-		</select>
-		<label for='toneB'></label>
-		<select id='toneB'>
-			<option value="noAnswer"></option>
-			<option value="1">1st</option>
-			<option value="2">2nd</option>
-			<option value="3">3rd</option>
-			<option value="4">4th</option>
-			<option value="5">5th</option>
-			<option value="unsure">Not sure</option>
+			<option value="1">Bar 1</option>
+			<option value="2">Bar 2</option>
+			<option value="3">Bar 3</option>
+			<option value="4">Bar 4</option>
+			<option value="5">Bar 5</option>
 		</select>
 	</p>
-	<p id='whichShorter' class='question'>Which highlighted tone is <span class="smallAdj">shorter</span>? 
-		<select id='shorterTone'>
-			<option value="noAnswer"></option>
-			<option value="A">First highlighted tone</option>
-			<option value="B">Second highlighted tone</option>
-			<option value="unsure">Not sure</option>
-		</select>
-	</p>
-	<p id='percentage' class='question'>What percent is the <span class="smallAdj">shorter</span> of the <span class="bigAdj">longer</span>?
+	<p id='percentage' class='question'>What percent is the smaller of the bigger?
 		<input type="text" id="percentAnswer" size="3" maxLength="3" />%
-		<span id="examples">For example, if the <span class="smallAdj">shorter</span> tone is only <sup>1</sup>&frasl;<sub>4</sub> the <span class="chartAttribute">length</span> of the <span class="bigAdj">longer</span> tone, enter '25'.</span>
-		<i id='unsureInstructions'>Type '0' if you're unsure</i>
+		<span id="examples">For example, if the smaller bar is only <sup>1</sup>&frasl;<sub>4</sub> the size of the bigger bar, enter '25'.</span>
 	</p>
 </div>
 <p id="previewWarning">This is a PREVIEW. Please accept the HIT first.</p>
