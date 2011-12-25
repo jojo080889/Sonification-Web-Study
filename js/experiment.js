@@ -94,13 +94,13 @@ function drawGraph(nextTrial) {
 
 		// draw the actual bars
 		if (isAnimated && isVolume) {
-			$(bars[i]).delay(2000 * i).animate({opacity: 1}, 1).animate( { height: ((dataArr[i] * 1.8) + "px") }, 1000);
+			$(bars[i]).delay(2000 * i).animate({opacity: 1}, 1).animate( { height: ((dataArr[i] * 1.8) + "px") }, 1000, 'linear');
 		} else if (isAnimated && isDuration) {
 			var dur = (dataArr[i] / 40) * 1000; 
-			$(bars[i]).delay(durationDelay).animate({opacity: 1}, 1).animate({ height: ((dataArr[i] * 1.8) + "px") }, dur);
+			$(bars[i]).delay(durationDelay).animate({opacity: 1}, 1).animate({ height: ((dataArr[i] * 1.8) + "px") }, dur, 'linear');
 			durationDelay += (dur + 2500);
 		} else if (isAnimated) {
-			$(bars[i]).delay(2000 * i).animate({opacity: 1}, 1).animate({ height: ((dataArr[i] * 1.8) + "px") }, 1000);
+			$(bars[i]).delay(2000 * i).animate({opacity: 1}, 1).animate({ height: ((dataArr[i] * 1.8) + "px") }, 1000, 'linear');
 		} else {
 			$(bars[i]).css("opacity", 1).css("height", (dataArr[i] * 1.8) + "px");
 		}
