@@ -8,6 +8,7 @@ function questionCountdown() {
 
 		$("#countdown_desc").hide();
 		$("#graph").hide();
+		$("#description").hide();
 		$("#questions").show();
 		$("#nextTrial").removeAttr("disabled");
 		

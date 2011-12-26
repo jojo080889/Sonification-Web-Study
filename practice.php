@@ -21,9 +21,15 @@
 <body>
 <?php include 'progress.php' ?>
 <h1 id="question_header">Practice Question 1 out of 3</h1>
-<p id="description">
-	Answer the questions about the <b>two marked bars</b> in the graph below. Go with your <b>gut instinct</b> and try not to make a precise measurement. You will have <b>20 seconds</b> to view the graph before answering the questions.
-</p>
+<div id="description">
+	View the graph below. Pay attention to:
+	<ul>
+		<li>which marked bar is <b>smaller</b>,</li>
+		<li>and what <b>percentage</b> the smaller marked bar is of the bigger marked bar.</li>
+	</ul>
+	Go with your <b>gut instinct</b> and try not to make a precise measurement. <br /><br />
+	You will have <b>20 seconds</b> to view the graph before answering the questions.
+</div>
 <p id="countdown_desc">
 	<b id="countdown">20</b> seconds until the questions appear...
 </p>
@@ -64,7 +70,7 @@
 	</p>
 	<p id="percentage" class='question'>
 		What percent is the smaller of the bigger?<br />
-		<span id="examples">For example, if the smaller bar is only <sup>1</sup>&frasl;<sub>4</sub> the size of the bigger bar, enter '25'.</span>
+		<span id="examples">For example, if the smaller bar is only <sup>1</sup>&frasl;<sub>4</sub> the size of the bigger bar, pick '25%'.</span>
 		<span id="practiceOptions">
 		<input type="radio" name="practiceAnswer" id="practiceAnswer1" value="55"><label id="practiceAnswerLabel1" for="practiceAnswer1">55%</label><br />
 		<input type="radio" name="practiceAnswer" id="practiceAnswer2" value="22"><label id="practiceAnswerLabel2" for="practiceAnswer2">22%</label><br />

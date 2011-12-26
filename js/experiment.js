@@ -90,6 +90,7 @@ function loadNextTrial() {
 		$("#countdown_desc #countdown").html("20");
 		$("#questions").hide();
 		$("#countdown_desc").show();
+		$("#description").show();
 
 		// replace content
 		$("#question_header").html("Question " + (trialPos + 1) + " out of " + trialCount);

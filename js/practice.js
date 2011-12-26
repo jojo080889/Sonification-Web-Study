@@ -71,6 +71,7 @@ function resetPracticeQuestion() {
 	$("#countdown_desc #countdown").html("20");
 	$("#questions").hide();
 	$("#countdown_desc").show();	
+	$("#description").show();
 	resetPracticePercentageAnswer();
 	
 	// reset sound player
@@ -115,6 +116,7 @@ function loadNextPractice() {
 		$("#countdown_desc #countdown").html("20");
 		$("#questions").hide();
 		$("#countdown_desc").show();	
+		$("#description").show();
 		resetPracticePercentageAnswer();
 		
 		// replace content

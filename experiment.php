@@ -21,9 +21,15 @@
 <body>
 <?php include 'progress.php' ?>
 <h1 id="question_header">Question 1 out of 24</h1>
-<p id="description">
-	Answer the questions about the <b>two marked bars</b> in the graph below. Go with your <b>gut instinct</b> and try not to make a precise measurement. You will have <b>20 seconds</b> to view the graph before answering the questions.
-</p>
+<div id="description">
+	View the graph below. Pay attention to:
+	<ul>
+		<li>which marked bar is <b>smaller</b>,</li>
+		<li>and what <b>percentage</b> the smaller marked bar is of the bigger marked bar.</li>
+	</ul>
+	Go with your <b>gut instinct</b> and try not to make a precise measurement. <br /><br />
+	You will have <b>20 seconds</b> to view the graph before answering the questions.
+</div>
 <p id="countdown_desc">
 	<b id="countdown">20</b> seconds until the questions appear...
 </p>
