@@ -26,7 +26,7 @@ $(document).ready(function() {
 	}
 	
 	var nextTrial = experiment.getNextTrial();
-
+	
 	// load question header and instructions
 	trialPos = experiment.getTrialPos();
 	$("#question_header").html("Question " + (trialPos + 1) + " out of " + trialCount);
@@ -83,8 +83,7 @@ function drawGraph(nextTrial) {
 	var isVolume = (nextTrial >= 7 && nextTrial < 13) || (nextTrial >= 25 && nextTrial < 31);
 	var bars = $(".bar");
 	var marks = $(".bar .mark");
-	var durationDelay = 70;
-
+	var durArray = toneArrays[nextTrial];
 
 	for (var i = 0; i < dataArr.length; i++) {
 		// mark the highlighted bars
@@ -93,12 +92,8 @@ function drawGraph(nextTrial) {
 		}
 
 		// draw the actual bars
-		if (isAnimated && isVolume) {
-			$(bars[i]).delay(2000 * i).animate({opacity: 1}, 1).animate( { height: ((dataArr[i] * 1.8) + "px") }, 1000, 'linear');
-		} else if (isAnimated && isDuration) {
-			var dur = (dataArr[i] / 40) * 1000; 
-			$(bars[i]).delay(durationDelay).animate({opacity: 1}, 1).animate({ height: ((dataArr[i] * 1.8) + "px") }, dur, 'linear');
-			durationDelay += (dur + 2500);
+		if (isAnimated && (isVolume || isDuration)) {
+			$(bars[i]).delay(durArray[i][0]).animate({opacity: 1}, 1).animate( { height: ((dataArr[i] * 1.8) + "px") }, (durArray[i][1] - durArray[i][0]), 'linear');
 		} else if (isAnimated) {
 			$(bars[i]).delay(2000 * i).animate({opacity: 1}, 1).animate({ height: ((dataArr[i] * 1.8) + "px") }, 1000, 'linear');
 		} else {
