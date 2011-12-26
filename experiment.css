@@ -91,6 +91,11 @@ body {
 	display: none;
 	float: right;
 }
+#try_again {
+	text-decoration: underline;
+	font-weight: bold;
+	cursor: pointer;
+}
 
 .tonelabel {
 	text-align: center;

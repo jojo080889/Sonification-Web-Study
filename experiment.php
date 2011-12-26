@@ -15,13 +15,14 @@
 	<script type="text/javascript" src="js/soundmanagerSetUp.js"></script>
 	<script type="text/javascript" src="js/utility.js"></script>
 	<script type="text/javascript" src="js/data.js"></script>
+	<script type="text/javascript" src="js/graph.js"></script>
 	<script type="text/javascript" src="js/experiment.js"></script>
 </head>
 <body>
 <?php include 'progress.php' ?>
 <h1 id="question_header">Question 1 out of 24</h1>
 <p id="description">
-	Answer the questions about the <b>two marked bars</b> in the graph below. Go with your <b>gut instinct</b> and try not to make a precise measurement.
+	Answer the questions about the <b>two marked bars</b> in the graph below. Go with your <b>gut instinct</b> and try not to make a precise measurement. You will have <b>20 seconds</b> to view the graph before answering the questions.
 </p>
 <p id="countdown_desc">
 	<b id="countdown">20</b> seconds until the questions appear...

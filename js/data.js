@@ -1,3 +1,8 @@
+var practiceDataArrays = [
+[29,33,53,78,100],
+[10,37,95,97,21]
+];
+
 var dataArrays = [
 [68,24,43,12,96],
 [46,70,100,29,10],
@@ -35,6 +40,11 @@ var dataArrays = [
 [98,66,64,54,51],
 [25,66,13,27,97],
 [18,87,53,77,15]
+];
+
+var practiceHighlightArrays = [
+[false,false,true,true,false],
+[false,false,false,true,true]
 ];
 
 var highlightArrays = [
@@ -77,6 +87,9 @@ var highlightArrays = [
 ];
 
 // millisecond start and stops to each tone for each sound clip
+var practiceToneArrays = new Array();
+practiceToneArrays[2] = [[33, 1062], [1898, 2913], [3806, 4821], [5709, 6729], [7563, 8588]];
+
 var toneArrays = new Array();
 toneArrays[19] = [[60, 2286], [5032, 5612], [8055, 8366], [11034, 11770], [14048, 14594]];
 toneArrays[20] = [[61, 573], [3030, 4924], [7033, 7832], [10044, 12327], [15061, 17211]];

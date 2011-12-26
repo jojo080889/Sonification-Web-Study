@@ -1,6 +1,6 @@
 <?php
 	$curPage = "training";
-	$nextPage = "experiment";
+	$nextPage = "practice";
 ?>
 <?php include 'header.php' ?>
 <!DOCTYPE html>

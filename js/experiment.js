@@ -15,15 +15,15 @@ $(document).ready(function() {
 
 	// create experiment object
 	experiment = new SonificationExperiment(chartType, trialCount);
-	
-	// fill in hidden form and assign events
-	$("#assignmentId").val(aID);
-	$("#nextTrial").bind('click', loadNextTrial);
 
 	// show preview warning if needed
 	if (aID == "ASSIGNMENT_ID_NOT_AVAILABLE") {
 		$("#previewWarning").css('display', 'block');
-	}
+	}	
+	
+	// fill in hidden form and assign events
+	$("#assignmentId").val(aID);
+	$("#nextTrial").bind('click', loadNextTrial);
 	
 	var nextTrial = experiment.getNextTrial();
 	
@@ -56,52 +56,6 @@ $(document).ready(function() {
 	}
 });
 
-function questionCountdown() {
-	var curSec = $("#countdown_desc #countdown").html();
-	if (curSec <= 1) {
-		// cancel the interval
-		clearInterval(questionInterval);
-
-		$("#countdown_desc").hide();
-		$("#questions").show();
-		$("#nextTrial").removeAttr("disabled");
-		
-		// reset baseTime
-		baseTime = new Date().getTime();
-	} else {
-		$("#countdown_desc #countdown").html(curSec - 1);
-	}
-}
-
-function drawGraph(nextTrial) {
-	// draw graph
-	$("#loadinggraph").hide();
-	var dataArr = dataArrays[nextTrial - 1];
-	var highlightArr = highlightArrays[nextTrial - 1];
-	var isAnimated = (nextTrial >= 19 && nextTrial < 37);
-	var isDuration = (nextTrial >= 1 && nextTrial < 7) || (nextTrial >= 19 && nextTrial < 25);
-	var isVolume = (nextTrial >= 7 && nextTrial < 13) || (nextTrial >= 25 && nextTrial < 31);
-	var bars = $(".bar");
-	var marks = $(".bar .mark");
-	var durArray = toneArrays[nextTrial];
-
-	for (var i = 0; i < dataArr.length; i++) {
-		// mark the highlighted bars
-		if (highlightArr[i]) {
-			$(marks[i]).html("&#8226;");
-		}
-
-		// draw the actual bars
-		if (isAnimated && (isVolume || isDuration)) {
-			$(bars[i]).delay(durArray[i][0]).animate({opacity: 1}, 1).animate( { height: ((dataArr[i] * 1.8) + "px") }, (durArray[i][1] - durArray[i][0]), 'linear');
-		} else if (isAnimated) {
-			$(bars[i]).delay(2000 * i).animate({opacity: 1}, 1).animate({ height: ((dataArr[i] * 1.8) + "px") }, 1000, 'linear');
-		} else {
-			$(bars[i]).css("opacity", 1).css("height", (dataArr[i] * 1.8) + "px");
-		}
-	}
-}
-
 function loadNextTrial() {	
 	trialPos = experiment.getTrialPos();
 
@@ -126,7 +80,8 @@ function loadNextTrial() {
 	if (trialPos != experiment.END_OF_TRIALS) {
 		// reset graph
 		$(".bar").css("height", 0).css("opacity", 0);
-		
+		$("#graph").show();
+
 		// reset content
 		$("#graph .mark").html("");
 		$("#smallerBar").val("noAnswer");
