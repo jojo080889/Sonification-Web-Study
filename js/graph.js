@@ -1,12 +1,15 @@
 // graph.js
 
 function questionCountdown() {
+	var countdownSquares = $("#countdown_bar .square");
+
 	var curSec = $("#countdown_desc #countdown").html();
 	if (curSec <= 1) {
 		// cancel the interval
 		clearInterval(questionInterval);
 
 		$("#countdown_desc").hide();
+		$("#countdown_bar").hide();
 		$("#graph").hide();
 		$("#description").hide();
 		$("#questions").show();
@@ -16,6 +19,7 @@ function questionCountdown() {
 		baseTime = new Date().getTime();
 	} else {
 		$("#countdown_desc #countdown").html(curSec - 1);
+		$(countdownSquares[20 - curSec]).css('backgroundColor', '#ddd');
 	}
 }
 
@@ -60,4 +64,10 @@ function drawGraph(nextTrial, isPractice) {
 			$(bars[i]).css("opacity", 1).css("height", (dataArr[i] * 1.8) + "px");
 		}
 	}
+}
+
+function resetCountdownBar() {
+	$("#countdown_bar").css('opacity', 1);
+	$("#countdown_bar .square").css('backgroundColor', '#A4D5FF');
+	$("#countdown_bar").show();
 }

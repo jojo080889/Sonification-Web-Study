@@ -33,6 +33,28 @@
 <p id="countdown_desc">
 	<b id="countdown">20</b> seconds until the questions appear...
 </p>
+<div id="countdown_bar">
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+	<span class="square"></span>
+</div>
 <div id="graph">
 	<span id="loadinggraph">Loading...</span>
 	<div class="bar" style="left: 20px">

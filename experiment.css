@@ -21,6 +21,20 @@ body {
 	text-align: center;
 	font-style: italic;
 	color: #666;
+	display: none;
+}
+#countdown_bar {
+	text-align: center;
+	margin: 10px 0;
+	opacity: 1;
+}
+#countdown_bar .square {
+	width: 7px;
+	height: 7px;
+	display: inline-block;
+	zoom: 1;
+	*display:inline;
+	background: #A4D5FF;
 }
 .question {
 	background-color: #eee;

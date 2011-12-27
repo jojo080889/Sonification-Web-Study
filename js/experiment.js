@@ -45,6 +45,7 @@ $(document).ready(function() {
 					$("#loading").hide();
 					drawGraph(nextTrial);
 					this.play();
+					$("#countdown_bar").animate({opacity: 1}, 20000);
 					questionInterval = setInterval("questionCountdown()", 1000);
 				}
 			});
@@ -52,6 +53,7 @@ $(document).ready(function() {
 	} else {
 		// just draw the graph
 		drawGraph(nextTrial);
+		$("#countdown_bar").animate({opacity: 1}, 20000);
 		questionInterval = setInterval("questionCountdown()", 1000);
 	}
 });
@@ -89,7 +91,7 @@ function loadNextTrial() {
 		$("#nextTrial").attr("disabled", "disabled");
 		$("#countdown_desc #countdown").html("20");
 		$("#questions").hide();
-		$("#countdown_desc").show();
+		resetCountdownBar();
 		$("#description").show();
 
 		// replace content
@@ -113,11 +115,13 @@ function loadNextTrial() {
 					$("#loading").hide();
 					drawGraph(nextTrial);
 					this.play();
+					$("#countdown_bar").animate({opacity: 1}, 20000);
 					questionInterval = setInterval("questionCountdown()", 1000);
 				}
 			});
 		} else {
 			drawGraph(nextTrial);
+			$("#countdown_bar").animate({opacity: 1}, 20000);
 			questionInterval = setInterval("questionCountdown()", 1000);
 		}
 		

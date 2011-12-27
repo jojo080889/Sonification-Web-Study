@@ -50,6 +50,7 @@ $(document).ready(function() {
 				$("#loading").hide();
 				drawGraph(nextTrial, true);
 				this.play();
+				$("#countdown_bar").animate({opacity: 1}, 20000);
 				questionInterval = setInterval("questionCountdown()", 1000);
 			}
 		});
@@ -70,7 +71,7 @@ function resetPracticeQuestion() {
 	$("#nextTrial").attr("disabled", "disabled");
 	$("#countdown_desc #countdown").html("20");
 	$("#questions").hide();
-	$("#countdown_desc").show();	
+	resetCountdownBar();
 	$("#description").show();
 	resetPracticePercentageAnswer();
 	
@@ -88,6 +89,7 @@ function resetPracticeQuestion() {
 			$("#loading").hide();
 			drawGraph(nextTrial, true);
 			this.play();
+			$("#countdown_bar").animate({opacity: 1}, 20000);
 			questionInterval = setInterval("questionCountdown()", 1000);
 		}
 	});
@@ -115,7 +117,7 @@ function loadNextPractice() {
 		$("#nextTrial").attr("disabled", "disabled");
 		$("#countdown_desc #countdown").html("20");
 		$("#questions").hide();
-		$("#countdown_desc").show();	
+		resetCountdownBar();
 		$("#description").show();
 		resetPracticePercentageAnswer();
 		
@@ -138,6 +140,7 @@ function loadNextPractice() {
 				$("#loading").hide();
 				drawGraph(nextTrial, true);
 				this.play();
+				$("#countdown_bar").animate({opacity: 1}, 20000);
 				questionInterval = setInterval("questionCountdown()", 1000);
 			}
 		});
