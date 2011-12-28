@@ -49,6 +49,10 @@ function drawGraph(nextTrial, isPractice) {
 	var bars = $(".bar");
 	var marks = $(".bar .mark");
 
+	if (isAnimated && (isVolume || isDuration)) {
+		//animateBar(bars, 0, dataArr, durArray);
+		waitBar(bars, 0, durArray[0][0], dataArr, durArray)
+	}
 	for (var i = 0; i < dataArr.length; i++) {
 		// mark the highlighted bars
 		if (highlightArr[i]) {
@@ -57,13 +61,50 @@ function drawGraph(nextTrial, isPractice) {
 
 		// draw the actual bars
 		if (isAnimated && (isVolume || isDuration)) {
-			$(bars[i]).delay(durArray[i][0]).animate({opacity: 1}, 1).animate( { height: ((dataArr[i] * 1.8) + "px") }, (durArray[i][1] - durArray[i][0]), 'linear');
+			// do nothing
 		} else if (isAnimated) {
 			$(bars[i]).delay(2000 * i).animate({opacity: 1}, 1).animate({ height: ((dataArr[i] * 1.8) + "px") }, 1000, 'linear');
 		} else {
 			$(bars[i]).css("opacity", 1).css("height", (dataArr[i] * 1.8) + "px");
 		}
 	}
+}
+
+function animateBar(bars, i, dataArr, durArray) {
+	//console.log("animateBar" + i);
+	var bar = $(bars[i]);
+	bar.css("opacity", 1);
+	var height = 0;
+	var maxHeight = (dataArr[i] * 1.8);
+	var length = (durArray[i][1] - durArray[i][0]);
+	doTimer(length, 50, function(steps)
+	{
+		height = height + (maxHeight / steps);
+		bar.css("height", height + "px");
+	},
+	function()
+	{
+		bar.css("height", maxHeight + "px");
+		if (i < 4) {
+			i = i + 1;
+			delay = durArray[i][0] - durArray[i - 1][1];
+			//console.log("delay = " + delay + ", " + durArray[i][0] + " - " + durArray[i - 1][1]);
+			waitBar(bars, i, delay, dataArr, durArray);
+		}
+	});
+}
+
+function waitBar(bars, i, delay, dataArr, durArray) {
+	//console.log("waitBar" + i);
+	var opacity = 1;
+	doTimer(delay, 50, function(steps)
+	{
+		opacity = opacity - (1 / steps);
+	},
+	function()
+	{
+		animateBar(bars, i, dataArr, durArray);
+	});
 }
 
 function resetCountdownBar() {
