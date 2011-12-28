@@ -1,1 +1,1 @@
-%MTURK_CMD_HOME%\bin\loadHITs -label viz-son -input viz-son.input -question viz-son.question -properties viz-son.properties
+%MTURK_CMD_HOME%\bin\loadHITs -label viz_son -input viz_son.input -question viz_son.question -properties viz_son.properties
