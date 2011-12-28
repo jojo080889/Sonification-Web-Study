@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
-  <ExternalURL>http://www.stanford.edu/~jojo0808/mturk/calibration.html?chartType=${chartTypes}</ExternalURL>
-  <FrameHeight>500</FrameHeight>
-</ExternalQuestion>
